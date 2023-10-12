@@ -9,23 +9,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Diary Edit View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="DiaryEditViewController" customModule="DiaryEnglish_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spring_background" translatesAutoresizingMaskIntoConstraints="NO" id="KpF-ry-opv">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtk-Qk-zUV" customClass="HeaderView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="aYS-9l-Nt4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="英語日記編集"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowBackButton" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KpF-ry-opv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7iL-eY-Ins"/>
+                            <constraint firstAttribute="bottom" secondItem="KpF-ry-opv" secondAttribute="bottom" id="Cmq-HD-dXc"/>
+                            <constraint firstItem="mtk-Qk-zUV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="al6-S7-C3C"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KpF-ry-opv" secondAttribute="trailing" id="jQo-hl-WTX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mtk-Qk-zUV" secondAttribute="trailing" id="rgX-y8-dUM"/>
+                            <constraint firstItem="KpF-ry-opv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="xO2-FW-QOL"/>
+                            <constraint firstItem="mtk-Qk-zUV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zvb-2N-W6P"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="headerView" destination="mtk-Qk-zUV" id="XGa-DJ-j1p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="-2"/>
+            <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="spring_background" width="2400" height="2000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
