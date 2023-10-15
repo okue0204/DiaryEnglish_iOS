@@ -7,9 +7,28 @@
 
 import UIKit
 
+protocol DiaryListTableViewCellDelegate: AnyObject {
+    func englishDiarySpeechButtonDidTap(cell: UITableViewCell)
+    func wantToSaySpeechButtonDidTap(cell: UITableViewCell)
+}
+
 class DiaryListTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var japaneseDiaryTextView: UITextView!
+    @IBOutlet weak var japaneseDiaryLabel: UILabel!
+    @IBOutlet weak var englishDiaryLabel: UILabel!
+    @IBOutlet weak var situationLabel: UILabel!
+    @IBOutlet weak var watToSayLabel: UILabel!
+    @IBOutlet weak var situationStackView: UIStackView!
+    @IBOutlet weak var wantToSayStackView: UIStackView!
+    
+    weak var delegate: DiaryListTableViewCellDelegate?
+    
+    var diary: Diary? {
+        didSet {
+            guard let diary else { return }
+            setupLayout(diary: diary)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +41,20 @@ class DiaryListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    private func setupLayout() {
-        
+    private func setupLayout(diary: Diary) {
+        japaneseDiaryLabel.text = diary.japanese
+        englishDiaryLabel.text = diary.english
+        situationStackView.isHidden = diary.situation.isNullOrEmpty
+        wantToSayStackView.isHidden = diary.watToSay.isNullOrEmpty
+        situationLabel.text = diary.situation
+        watToSayLabel.text = diary.watToSay
     }
     
+    @IBAction func englishDiarySpeechButtonDidTap(_ sender: Any) {
+        delegate?.englishDiarySpeechButtonDidTap(cell: self)
+    }
+    
+    @IBAction func wantToSaySpeechButtonDidTap(_ sender: Any) {
+        delegate?.wantToSaySpeechButtonDidTap(cell: self)
+    }
 }

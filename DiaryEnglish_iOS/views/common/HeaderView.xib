@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="MlS-JC-1PW" id="Mus-sg-Usj"/>
+                <outlet property="deleteButton" destination="hSw-c8-PNA" id="6HC-b2-dXj"/>
                 <outlet property="titleLabel" destination="y5u-B9-Peg" id="uc2-h7-wXz"/>
             </connections>
         </placeholder>
@@ -35,6 +36,16 @@
                         <action selector="backButtonDidTap:" destination="-1" eventType="touchUpInside" id="GSh-tJ-tgc"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSw-c8-PNA">
+                    <rect key="frame" x="343" y="15" width="30" height="30"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="削除">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteButtonDidTap:" destination="-1" eventType="touchUpInside" id="DBv-at-kb2"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +53,9 @@
                 <constraint firstItem="MlS-JC-1PW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Pje-kB-f0z"/>
                 <constraint firstItem="y5u-B9-Peg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TV9-3S-U8h"/>
                 <constraint firstItem="y5u-B9-Peg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="d6Y-81-JbJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hSw-c8-PNA" secondAttribute="trailing" constant="20" id="k6F-P8-wr0"/>
                 <constraint firstItem="MlS-JC-1PW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vBX-Fp-8h6"/>
+                <constraint firstItem="hSw-c8-PNA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wgJ-pS-irt"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="107.63358778625954" y="298.59154929577466"/>

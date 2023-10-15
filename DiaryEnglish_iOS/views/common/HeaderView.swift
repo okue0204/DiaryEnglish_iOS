@@ -9,12 +9,19 @@ import UIKit
 
 protocol HeaderViewDelegate: AnyObject {
     func backButtonDidTap()
+    func deleteButtonDidTap()
+}
+
+extension HeaderViewDelegate {
+    func backButtonDidTap() {}
+    func deleteButtonDidTap() {}
 }
 
 class HeaderView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     weak var delegate: HeaderViewDelegate?
     
@@ -36,6 +43,15 @@ class HeaderView: UIView {
         }
     }
     
+    @IBInspectable var isShowDeleteButton: Bool {
+        get {
+            deleteButton.isHidden
+        }
+        set {
+            deleteButton.isHidden = !newValue
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -48,5 +64,9 @@ class HeaderView: UIView {
     
     @IBAction func backButtonDidTap(_ sender: Any) {
         delegate?.backButtonDidTap()
+    }
+    
+    @IBAction func deleteButtonDidTap(_ sender: Any) {
+        delegate?.deleteButtonDidTap()
     }
 }

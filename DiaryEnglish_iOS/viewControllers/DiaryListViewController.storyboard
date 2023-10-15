@@ -29,32 +29,70 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isShowBackButton" value="NO"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="英語日記リスト"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDeleteButton" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cX6-DD-49j">
-                                <rect key="frame" x="0.0" y="119" width="393" height="699"/>
+                                <rect key="frame" x="0.0" y="163" width="393" height="655"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvO-cD-t0h">
+                                <rect key="frame" x="0.0" y="124" width="393" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-RU-VA7">
+                                        <rect key="frame" x="5" y="0.0" width="383" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edg-zi-th4">
+                                        <rect key="frame" x="346" y="1" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="O8r-c3-Rif"/>
+                                            <constraint firstAttribute="height" constant="32" id="uRz-vW-hsg"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="cancell"/>
+                                        <connections>
+                                            <action selector="deleteButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hl7-Mw-j80"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Edg-zi-th4" secondAttribute="trailing" constant="15" id="EGW-n3-X7d"/>
+                                    <constraint firstItem="xfW-RU-VA7" firstAttribute="top" secondItem="hvO-cD-t0h" secondAttribute="top" id="YgS-oJ-nJx"/>
+                                    <constraint firstItem="Edg-zi-th4" firstAttribute="centerY" secondItem="hvO-cD-t0h" secondAttribute="centerY" id="c2k-bd-Wjr"/>
+                                    <constraint firstAttribute="bottom" secondItem="xfW-RU-VA7" secondAttribute="bottom" id="ciM-sN-bBz"/>
+                                    <constraint firstItem="xfW-RU-VA7" firstAttribute="leading" secondItem="hvO-cD-t0h" secondAttribute="leading" constant="5" id="sUh-UG-czq"/>
+                                    <constraint firstAttribute="trailing" secondItem="xfW-RU-VA7" secondAttribute="trailing" constant="5" id="yUt-Qc-RcV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CJt-N7-HSG" secondAttribute="trailing" id="1yE-zm-SN7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hvO-cD-t0h" secondAttribute="trailing" id="2N3-0T-v3h"/>
                             <constraint firstAttribute="bottom" secondItem="Zxf-2D-y7n" secondAttribute="bottom" id="5Oe-62-7Tj"/>
                             <constraint firstItem="CJt-N7-HSG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CIZ-8D-OxO"/>
+                            <constraint firstItem="cX6-DD-49j" firstAttribute="top" secondItem="hvO-cD-t0h" secondAttribute="bottom" constant="5" id="HCL-2V-Nvj"/>
                             <constraint firstItem="CJt-N7-HSG" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="INV-pt-xGS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Zxf-2D-y7n" secondAttribute="trailing" id="KNe-Sq-MPG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cX6-DD-49j" secondAttribute="trailing" id="Ko1-5Y-5QK"/>
                             <constraint firstItem="Zxf-2D-y7n" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TdY-jr-Npz"/>
                             <constraint firstItem="Zxf-2D-y7n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZPO-Th-IBY"/>
+                            <constraint firstItem="hvO-cD-t0h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cGe-kB-cag"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cX6-DD-49j" secondAttribute="bottom" id="exs-md-Orn"/>
-                            <constraint firstItem="cX6-DD-49j" firstAttribute="top" secondItem="CJt-N7-HSG" secondAttribute="bottom" id="ubd-kP-9S6"/>
+                            <constraint firstItem="hvO-cD-t0h" firstAttribute="top" secondItem="CJt-N7-HSG" secondAttribute="bottom" constant="5" id="gcA-oI-0tG"/>
                             <constraint firstItem="cX6-DD-49j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wCJ-66-ocG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="n0l-Id-03M"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="Zxf-2D-y7n" id="Lkm-p0-ibt"/>
+                        <outlet property="headerView" destination="CJt-N7-HSG" id="flk-ho-p4n"/>
+                        <outlet property="searchTextField" destination="xfW-RU-VA7" id="aw8-Br-6cA"/>
                         <outlet property="tableView" destination="cX6-DD-49j" id="FvE-CG-nat"/>
                     </connections>
                 </viewController>
@@ -81,6 +119,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancell" width="16" height="16"/>
         <image name="spring_background" width="2400" height="2000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

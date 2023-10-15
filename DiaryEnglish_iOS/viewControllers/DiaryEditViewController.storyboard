@@ -29,6 +29,7 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="英語日記編集"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isShowBackButton" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDeleteButton" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

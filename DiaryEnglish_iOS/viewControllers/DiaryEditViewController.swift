@@ -11,6 +11,8 @@ class DiaryEditViewController: UIViewController {
 
     @IBOutlet weak var headerView: HeaderView!
     
+    var diary: Diary?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
