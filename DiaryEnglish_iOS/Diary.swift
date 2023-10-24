@@ -11,5 +11,5 @@ struct Diary {
     let japanese: String
     let english: String
     let situation: String?
-    let watToSay: String?
+    let wantToSay: String?
 }

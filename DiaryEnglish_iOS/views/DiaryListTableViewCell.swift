@@ -45,9 +45,9 @@ class DiaryListTableViewCell: UITableViewCell {
         japaneseDiaryLabel.text = diary.japanese
         englishDiaryLabel.text = diary.english
         situationStackView.isHidden = diary.situation.isNullOrEmpty
-        wantToSayStackView.isHidden = diary.watToSay.isNullOrEmpty
+        wantToSayStackView.isHidden = diary.wantToSay.isNullOrEmpty
         situationLabel.text = diary.situation
-        watToSayLabel.text = diary.watToSay
+        watToSayLabel.text = diary.wantToSay
     }
     
     @IBAction func englishDiarySpeechButtonDidTap(_ sender: Any) {

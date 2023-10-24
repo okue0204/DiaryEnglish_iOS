@@ -8,6 +8,15 @@
         "revision" : "45517c3cfec9469bbdd4f86e32393c28ae9df0bc",
         "version" : "4.3.3"
       }
+    },
+    {
+      "identity" : "swiftydi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/assystems/SwiftyDI",
+      "state" : {
+        "revision" : "42694a82658ce47ff000d1b5e6e5c65b2fe73690",
+        "version" : "1.0.0"
+      }
     }
   ],
   "version" : 2

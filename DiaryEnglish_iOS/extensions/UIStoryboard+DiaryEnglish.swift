@@ -9,5 +9,7 @@ import Foundation
 import UIKit
 
 extension UIStoryboard {
-    static let diaryEditViewController = UIStoryboard(name: String(describing: DiaryEditViewController.self), bundle: nil).instantiateInitialViewController() as! DiaryEditViewController
+    static let diaryEditViewControllerStoryboard = UIStoryboard(name: String(describing: DiaryEditViewController.self), bundle: nil)
+    
+    static let settingViewControllerStoryboard = UIStoryboard(name: String(describing: SettingViewController.self), bundle: nil)
 }

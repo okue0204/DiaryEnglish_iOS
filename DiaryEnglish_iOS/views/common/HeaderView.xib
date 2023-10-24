@@ -11,7 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="MlS-JC-1PW" id="Mus-sg-Usj"/>
-                <outlet property="deleteButton" destination="hSw-c8-PNA" id="6HC-b2-dXj"/>
+                <outlet property="defaultButton" destination="s83-S3-JIq" id="aan-Ri-iTb"/>
+                <outlet property="deleteButton" destination="DNu-uH-JXU" id="26M-x6-eKO"/>
+                <outlet property="settingButton" destination="hSw-c8-PNA" id="951-X1-ixN"/>
                 <outlet property="titleLabel" destination="y5u-B9-Peg" id="uc2-h7-wXz"/>
             </connections>
         </placeholder>
@@ -39,11 +41,31 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSw-c8-PNA">
                     <rect key="frame" x="343" y="15" width="30" height="30"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="設定">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="settingButtonDidTap:" destination="-1" eventType="touchUpInside" id="vkG-Cr-Nhb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-uH-JXU">
+                    <rect key="frame" x="20" y="15" width="30" height="30"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="削除">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
-                        <action selector="deleteButtonDidTap:" destination="-1" eventType="touchUpInside" id="DBv-at-kb2"/>
+                        <action selector="deleteButtonDidTap:" destination="-1" eventType="touchUpInside" id="56W-rD-fwi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s83-S3-JIq">
+                    <rect key="frame" x="316" y="15" width="57" height="30"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="初期設定">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="defaultButtonDidTap:" destination="-1" eventType="touchUpInside" id="pM5-lh-rFA"/>
                     </connections>
                 </button>
             </subviews>
@@ -53,7 +75,11 @@
                 <constraint firstItem="MlS-JC-1PW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Pje-kB-f0z"/>
                 <constraint firstItem="y5u-B9-Peg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TV9-3S-U8h"/>
                 <constraint firstItem="y5u-B9-Peg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="d6Y-81-JbJ"/>
+                <constraint firstItem="s83-S3-JIq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dZg-cT-wkd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hSw-c8-PNA" secondAttribute="trailing" constant="20" id="k6F-P8-wr0"/>
+                <constraint firstItem="DNu-uH-JXU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kEu-ol-Cja"/>
+                <constraint firstItem="DNu-uH-JXU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="nAy-eC-a5n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="s83-S3-JIq" secondAttribute="trailing" constant="20" id="p5G-w1-eUM"/>
                 <constraint firstItem="MlS-JC-1PW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vBX-Fp-8h6"/>
                 <constraint firstItem="hSw-c8-PNA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wgJ-pS-irt"/>
             </constraints>

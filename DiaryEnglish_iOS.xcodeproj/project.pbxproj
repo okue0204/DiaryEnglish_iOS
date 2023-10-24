@@ -14,6 +14,10 @@
 		3CA1C21A2ADBB39F00DEC693 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1C2192ADBB39F00DEC693 /* Diary.swift */; };
 		3CA1C21C2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1C21B2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift */; };
 		3CA1C21E2ADBFB7A00DEC693 /* String+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA1C21D2ADBFB7A00DEC693 /* String+DiaryEnglish.swift */; };
+		3CB5A9872AE67A4A009616ED /* SwiftyDI in Frameworks */ = {isa = PBXBuildFile; productRef = 3CB5A9862AE67A4A009616ED /* SwiftyDI */; };
+		3CB5A9892AE67AF6009616ED /* UserDefaultUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5A9882AE67AF6009616ED /* UserDefaultUsecase.swift */; };
+		3CB5A98B2AE67B05009616ED /* UserDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5A98A2AE67B05009616ED /* UserDefaultRepository.swift */; };
+		3CB5A98D2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5A98C2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift */; };
 		3CC390D62AD56822007897EB /* UIStoryboard+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC390D52AD56822007897EB /* UIStoryboard+DiaryEnglish.swift */; };
 		3CC390D92AD5694A007897EB /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC390D72AD5694A007897EB /* NoDataTableViewCell.swift */; };
 		3CC390DA2AD5694A007897EB /* NoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC390D82AD5694A007897EB /* NoDataTableViewCell.xib */; };
@@ -64,6 +68,9 @@
 		3CA1C2192ADBB39F00DEC693 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		3CA1C21B2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DiaryEnglish.swift"; sourceTree = "<group>"; };
 		3CA1C21D2ADBFB7A00DEC693 /* String+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DiaryEnglish.swift"; sourceTree = "<group>"; };
+		3CB5A9882AE67AF6009616ED /* UserDefaultUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUsecase.swift; sourceTree = "<group>"; };
+		3CB5A98A2AE67B05009616ED /* UserDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultRepository.swift; sourceTree = "<group>"; };
+		3CB5A98C2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+DiaryEnglish.swift"; sourceTree = "<group>"; };
 		3CC390D52AD56822007897EB /* UIStoryboard+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+DiaryEnglish.swift"; sourceTree = "<group>"; };
 		3CC390D72AD5694A007897EB /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
 		3CC390D82AD5694A007897EB /* NoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataTableViewCell.xib; sourceTree = "<group>"; };
@@ -98,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC390DE2AD56A54007897EB /* Lottie in Frameworks */,
+				3CB5A9872AE67A4A009616ED /* SwiftyDI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +133,22 @@
 				3C9EA2322AD81340007AC1FD /* HeaderView.xib */,
 			);
 			path = common;
+			sourceTree = "<group>";
+		};
+		3CB5A9832AE6790C009616ED /* repositories */ = {
+			isa = PBXGroup;
+			children = (
+				3CB5A98A2AE67B05009616ED /* UserDefaultRepository.swift */,
+			);
+			path = repositories;
+			sourceTree = "<group>";
+		};
+		3CB5A9842AE67914009616ED /* usecases */ = {
+			isa = PBXGroup;
+			children = (
+				3CB5A9882AE67AF6009616ED /* UserDefaultUsecase.swift */,
+			);
+			path = usecases;
 			sourceTree = "<group>";
 		};
 		3CC390DB2AD56A1C007897EB /* utils */ = {
@@ -160,6 +184,8 @@
 				3CCA917D2AD18A6600E6CC28 /* AppDelegate.swift */,
 				3CCA917F2AD18A6600E6CC28 /* SceneDelegate.swift */,
 				3CA1C2192ADBB39F00DEC693 /* Diary.swift */,
+				3CB5A9832AE6790C009616ED /* repositories */,
+				3CB5A9842AE67914009616ED /* usecases */,
 				3CC390DB2AD56A1C007897EB /* utils */,
 				3CCA92152AD4142100E6CC28 /* views */,
 				3CCA92092AD4014800E6CC28 /* enums */,
@@ -194,6 +220,7 @@
 				3C9EA2342AD81417007AC1FD /* UIView+DiaryEnglish.swift */,
 				3CA1C21B2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift */,
 				3CA1C21D2ADBFB7A00DEC693 /* String+DiaryEnglish.swift */,
+				3CB5A98C2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -247,6 +274,7 @@
 			name = DiaryEnglish_iOS;
 			packageProductDependencies = (
 				3CC390DD2AD56A54007897EB /* Lottie */,
+				3CB5A9862AE67A4A009616ED /* SwiftyDI */,
 			);
 			productName = DiaryEnglish_iOS;
 			productReference = 3CCA917A2AD18A6600E6CC28 /* DiaryEnglish_iOS.app */;
@@ -322,6 +350,7 @@
 			mainGroup = 3CCA91712AD18A6600E6CC28;
 			packageReferences = (
 				3CC390DC2AD56A54007897EB /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3CB5A9852AE67A4A009616ED /* XCRemoteSwiftPackageReference "SwiftyDI" */,
 			);
 			productRefGroup = 3CCA917B2AD18A6600E6CC28 /* Products */;
 			projectDirPath = "";
@@ -378,10 +407,13 @@
 				3CC390D92AD5694A007897EB /* NoDataTableViewCell.swift in Sources */,
 				3CA1C21C2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift in Sources */,
 				3CC390D62AD56822007897EB /* UIStoryboard+DiaryEnglish.swift in Sources */,
+				3CB5A98D2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift in Sources */,
 				3CC390E02AD56AAF007897EB /* BackgroundAnimationManager.swift in Sources */,
 				3CCA921B2AD4255C00E6CC28 /* UITableView+DiaryEnglish.swift in Sources */,
 				3CCA91BC2AD18CF700E6CC28 /* DiaryListViewController.swift in Sources */,
+				3CB5A9892AE67AF6009616ED /* UserDefaultUsecase.swift in Sources */,
 				3CCA917E2AD18A6600E6CC28 /* AppDelegate.swift in Sources */,
+				3CB5A98B2AE67B05009616ED /* UserDefaultRepository.swift in Sources */,
 				3CCA91802AD18A6600E6CC28 /* SceneDelegate.swift in Sources */,
 				3CCA91C02AD18D0B00E6CC28 /* DiaryEditViewController.swift in Sources */,
 				3CCA92182AD4143C00E6CC28 /* DiaryListTableViewCell.swift in Sources */,
@@ -737,6 +769,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3CB5A9852AE67A4A009616ED /* XCRemoteSwiftPackageReference "SwiftyDI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/assystems/SwiftyDI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3CC390DC2AD56A54007897EB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -748,6 +788,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3CB5A9862AE67A4A009616ED /* SwiftyDI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3CB5A9852AE67A4A009616ED /* XCRemoteSwiftPackageReference "SwiftyDI" */;
+			productName = SwiftyDI;
+		};
 		3CC390DD2AD56A54007897EB /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3CC390DC2AD56A54007897EB /* XCRemoteSwiftPackageReference "lottie-ios" */;

@@ -30,6 +30,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isShowBackButton" value="NO"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="英語日記リスト"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDeleteButton" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowsettingButton" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDefaultButton" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cX6-DD-49j">
@@ -68,6 +70,18 @@
                                     <constraint firstAttribute="trailing" secondItem="xfW-RU-VA7" secondAttribute="trailing" constant="5" id="yUt-Qc-RcV"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3U-Pr-HMq">
+                                <rect key="frame" x="313" y="738" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="D5v-MY-S0X"/>
+                                    <constraint firstAttribute="height" constant="50" id="j25-wZ-gGC"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="add"/>
+                                <connections>
+                                    <action selector="addButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BYH-IN-pHL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -82,9 +96,11 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cX6-DD-49j" secondAttribute="trailing" id="Ko1-5Y-5QK"/>
                             <constraint firstItem="Zxf-2D-y7n" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TdY-jr-Npz"/>
                             <constraint firstItem="Zxf-2D-y7n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZPO-Th-IBY"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Z3U-Pr-HMq" secondAttribute="bottom" constant="30" id="auW-cF-eEx"/>
                             <constraint firstItem="hvO-cD-t0h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cGe-kB-cag"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cX6-DD-49j" secondAttribute="bottom" id="exs-md-Orn"/>
                             <constraint firstItem="hvO-cD-t0h" firstAttribute="top" secondItem="CJt-N7-HSG" secondAttribute="bottom" constant="5" id="gcA-oI-0tG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z3U-Pr-HMq" secondAttribute="trailing" constant="30" id="iUa-M4-b5c"/>
                             <constraint firstItem="cX6-DD-49j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wCJ-66-ocG"/>
                         </constraints>
                     </view>
@@ -119,6 +135,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="50" height="50"/>
         <image name="cancell" width="16" height="16"/>
         <image name="spring_background" width="2400" height="2000"/>
         <systemColor name="systemBackgroundColor">

@@ -30,15 +30,173 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="英語日記編集"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isShowBackButton" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDeleteButton" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowsettingButton" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDefaultButton" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ss8-eW-810">
+                                <rect key="frame" x="10" y="119" width="373" height="733"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="kZd-w2-KCO">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="496.33333333333331"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uNR-TJ-I7P">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="120.33333333333333"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="日本語日記" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfb-43-bMG">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="une-sU-yfB">
+                                                        <rect key="frame" x="0.0" y="20.333333333333343" width="373" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="LZ1-kh-MIb"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Izu-L1-JQe" customClass="DotLineView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="122.33333333333334" width="373" height="1"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="0o5-E6-Mtz"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="dotColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-HL-ffF">
+                                                <rect key="frame" x="0.0" y="125.33333333333334" width="373" height="120.33333333333334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="英語日記" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DW-ul-PJA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mnx-tJ-Exs">
+                                                        <rect key="frame" x="0.0" y="20.333333333333343" width="373" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="P0g-cn-LvZ"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCV-UT-Ocy" customClass="DotLineView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="247.66666666666669" width="373" height="1"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="Cvt-cN-Mtm"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="dotColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ncm-uS-frY">
+                                                <rect key="frame" x="0.0" y="250.66666666666671" width="373" height="120.33333333333334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="シチュエーション" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3K-J1-utu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rue-2f-2uH">
+                                                        <rect key="frame" x="0.0" y="20.333333333333314" width="373" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="KZN-uj-XGp"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Me1-r5-lh4" customClass="DotLineView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="373" width="373" height="1"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="jDs-CZ-tb6"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="dotColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hT2-QX-BAe">
+                                                <rect key="frame" x="0.0" y="376" width="373" height="120.33333333333331"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="特に言いたい文" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqM-Tx-j2c">
+                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sIB-vy-d7V">
+                                                        <rect key="frame" x="0.0" y="20.333333333333371" width="373" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="ByF-q1-SR7"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kZd-w2-KCO" firstAttribute="trailing" secondItem="Vbe-v8-oUW" secondAttribute="trailing" id="1bG-g1-miR"/>
+                                    <constraint firstItem="kZd-w2-KCO" firstAttribute="top" secondItem="Vbe-v8-oUW" secondAttribute="top" id="C3j-9u-qNN"/>
+                                    <constraint firstItem="kZd-w2-KCO" firstAttribute="bottom" secondItem="Vbe-v8-oUW" secondAttribute="bottom" id="Ehg-5v-igz"/>
+                                    <constraint firstItem="kZd-w2-KCO" firstAttribute="width" secondItem="LiM-8C-wBq" secondAttribute="width" id="MkV-oD-3Le"/>
+                                    <constraint firstItem="kZd-w2-KCO" firstAttribute="leading" secondItem="Vbe-v8-oUW" secondAttribute="leading" id="acy-Lg-QIp"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Vbe-v8-oUW"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="LiM-8C-wBq"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KpF-ry-opv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7iL-eY-Ins"/>
                             <constraint firstAttribute="bottom" secondItem="KpF-ry-opv" secondAttribute="bottom" id="Cmq-HD-dXc"/>
+                            <constraint firstAttribute="bottom" secondItem="Ss8-eW-810" secondAttribute="bottom" id="GXt-jn-sMs"/>
+                            <constraint firstItem="Ss8-eW-810" firstAttribute="top" secondItem="mtk-Qk-zUV" secondAttribute="bottom" id="ItS-J6-ioQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ss8-eW-810" secondAttribute="trailing" constant="10" id="Wgg-K4-Tl5"/>
                             <constraint firstItem="mtk-Qk-zUV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="al6-S7-C3C"/>
+                            <constraint firstItem="Ss8-eW-810" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="fxz-Vh-B7J"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KpF-ry-opv" secondAttribute="trailing" id="jQo-hl-WTX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mtk-Qk-zUV" secondAttribute="trailing" id="rgX-y8-dUM"/>
                             <constraint firstItem="KpF-ry-opv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="xO2-FW-QOL"/>
@@ -46,7 +204,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="englishTextView" destination="Mnx-tJ-Exs" id="oTo-c5-y4n"/>
                         <outlet property="headerView" destination="mtk-Qk-zUV" id="XGa-DJ-j1p"/>
+                        <outlet property="japaneseTextView" destination="une-sU-yfB" id="78d-td-drL"/>
+                        <outlet property="scrollView" destination="Ss8-eW-810" id="3YE-hx-KgO"/>
+                        <outlet property="situationTextView" destination="rue-2f-2uH" id="aIZ-77-ykt"/>
+                        <outlet property="wantToSayTextView" destination="sIB-vy-d7V" id="K3M-Wu-DmU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -6,14 +6,40 @@
 //
 
 import UIKit
+import SwiftyDI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static let isMockDataEnabled = false
 
-
+    private func cofigureDependencyForMock() {
+        DIContainer {
+            // usecase
+            Dependency { UserDefaultUsecaseImpl() }
+            
+            // repository
+            Dependency { UserDefaultRepositoryImpl() }
+        }.build()
+    }
+    
+    private func configureDependency() {
+        DIContainer {
+            // usecase
+            Dependency { UserDefaultUsecaseImpl() }
+            
+            // repository
+            Dependency { UserDefaultRepositoryImpl() }
+        }.build()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if Self.isMockDataEnabled {
+            cofigureDependencyForMock()
+        } else {
+            configureDependency()
+        }
         return true
     }
 

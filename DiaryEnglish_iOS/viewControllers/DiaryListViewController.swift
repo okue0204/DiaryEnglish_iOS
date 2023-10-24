@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftyDI
 
 class DiaryListViewController: UIViewController {
     
@@ -15,36 +16,42 @@ class DiaryListViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var headerView: HeaderView!
     
+    @Injected
+    private var userDefaultsUsecase: UserDefaultUsecase
+    
     var diaries: [Diary] = [
         Diary(japanese: "今日は胸トレをした。とても疲れた。明日は足トレをするよ。",
               english: "I did workout for chest so very tired, I`m going to work out for leg",
               situation: "同僚にジムの話をしている時",
-              watToSay: "I did workout for chest"),
+              wantToSay: "I did workout for chest"),
         Diary(japanese: "えええ",
               english: "huuu",
               situation: "",
-              watToSay: ""),
+              wantToSay: ""),
         Diary(japanese: "ううう",
               english: "huuu",
               situation: "",
-              watToSay: ""),
+              wantToSay: ""),
         Diary(japanese: "いい",
               english: "huuu",
               situation: "",
-              watToSay: ""),
+              wantToSay: ""),
         Diary(japanese: "ああ",
               english: "v",
               situation: "",
-              watToSay: ""),
+              wantToSay: ""),
         Diary(japanese: "おお",
               english: "huuu",
               situation: "",
-              watToSay: ""),
+              wantToSay: ""),
         Diary(japanese: "かかか",
               english: "when I was riding",
               situation: "",
-              watToSay: ""),
+              wantToSay: ""),
     ]
+    
+    var speedData: Float?
+    var pitchData: Float?
     
     let speechSynthesizer = AVSpeechSynthesizer()
     
@@ -92,6 +99,12 @@ class DiaryListViewController: UIViewController {
     
     private func setupSynthesizer(voiceText: String) {
         let utterance = AVSpeechUtterance.init(string: voiceText)
+        if let speedData {
+            utterance.rate = speedData
+        }
+        if let pitchData {
+            utterance.pitchMultiplier = pitchData
+        }
         utterance.voice = AVSpeechSynthesisVoice.init(language: "en-US")
         speechSynthesizer.speak(utterance)
     }
@@ -104,6 +117,12 @@ class DiaryListViewController: UIViewController {
         searchTextField.text = nil
         searchWord = nil
     }
+    
+    @IBAction func addButtonDidTap(_ sender: Any) {
+        let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
+        diaryEditViewController.transitionType = .register
+        navigationController?.pushViewController(diaryEditViewController, animated: true)
+    }
 }
 
 extension DiaryListViewController: UITableViewDelegate {
@@ -111,9 +130,17 @@ extension DiaryListViewController: UITableViewDelegate {
         if filteredDiaries.isEmpty {
             return
         } else {
-            let diaryEditViewController = UIStoryboard.diaryEditViewController
+            let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
+            diaryEditViewController.transitionType = .edit
             diaryEditViewController.diary = diaries[indexPath.row]
             navigationController?.pushViewController(diaryEditViewController, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            diaries.remove(at: indexPath.row)
+            tableView.reloadData()
         }
     }
 }
@@ -171,6 +198,12 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
 }
 
 extension DiaryListViewController: HeaderViewDelegate {
+    func settingButtonDidTap() {
+        let settingViewController = UIStoryboard.settingViewControllerStoryboard.instantiateInitialViewController() as! SettingViewController
+        settingViewController.delegate = self
+        navigationController?.pushViewController(settingViewController, animated: true)
+    }
+    
     func deleteButtonDidTap() {
         if diaries.isEmpty {
             showAlert(title: "日記がありません", actions: [UIAlertAction(title: "OK",
@@ -186,10 +219,21 @@ extension DiaryListViewController: HeaderViewDelegate {
     }
 }
 
+extension DiaryListViewController: SettingViewControllerDelegate {
+    func didVoiceSpeed(speedData: Float) {
+        self.speedData = speedData
+    }
+    
+    func didVoicePich(pitchData: Float) {
+        self.pitchData = pitchData
+        userDefaultsUsecase.pitch = pitchData
+    }
+}
+
 fileprivate extension Array where Element == Diary {
     func filter(searchWord: String) -> [Diary] {
         return filter {
-            if let situation = $0.situation, let wantToSay = $0.watToSay {
+            if let situation = $0.situation, let wantToSay = $0.wantToSay {
                 return $0.english.contains(searchWord) || $0.japanese.contains(searchWord) || situation.contains(searchWord) || wantToSay.contains(searchWord)
             } else {
                 return $0.english.contains(searchWord) || $0.japanese.contains(searchWord)
