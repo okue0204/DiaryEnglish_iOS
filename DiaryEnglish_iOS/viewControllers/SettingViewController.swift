@@ -21,6 +21,9 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var voiceSpeedLabel: UILabel!
     @IBOutlet weak var voicePichLabel: UILabel!
     
+    private static let defaultSpeedValue: Float = 0.5
+    private static let defaultPitchValue: Float = 1.0
+    
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
     
@@ -70,12 +73,12 @@ extension SettingViewController: HeaderViewDelegate {
                   actions: [UIAlertAction(title: "はい",
                                           style: .default) { [weak self] _ in
             guard let self else { return }
-            voiceSpeedSlider.value = 0.5
-            voicePichSlider.value = 1.0
-            voiceSpeedLabel.text = String(0.5)
-            voicePichLabel.text = String(1.0)
-            userDefaultsUsecase.speed = 0.5
-            userDefaultsUsecase.pitch = 1.0
+            voiceSpeedSlider.value = Self.defaultSpeedValue
+            voicePichSlider.value = Self.defaultPitchValue
+            voiceSpeedLabel.text = String(Self.defaultSpeedValue)
+            voicePichLabel.text = String(Self.defaultPitchValue)
+            userDefaultsUsecase.speed = Self.defaultSpeedValue
+            userDefaultsUsecase.pitch = Self.defaultPitchValue
         }, UIAlertAction(title: "いいえ",
                          style: .cancel)])
     }
