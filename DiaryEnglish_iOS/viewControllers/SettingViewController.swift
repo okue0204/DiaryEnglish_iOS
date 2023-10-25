@@ -15,7 +15,6 @@ protocol SettingViewControllerDelegate: AnyObject {
 
 class SettingViewController: UIViewController {
     
-    @IBOutlet weak var headerView: HeaderView!
     @IBOutlet weak var voiceSpeedSlider: UISlider!
     @IBOutlet weak var voicePichSlider: UISlider!
     @IBOutlet weak var voiceSpeedLabel: UILabel!
@@ -36,7 +35,6 @@ class SettingViewController: UIViewController {
     }
     
     private func setupLayout() {
-        headerView.delegate = self
         voicePichSlider.minimumValue = 0.5
         voicePichSlider.maximumValue = 2.0
         voiceSpeedLabel.text = String(userDefaultsUsecase.speed)
@@ -45,7 +43,6 @@ class SettingViewController: UIViewController {
         voicePichSlider.value = userDefaultsUsecase.pitch
         delegate?.didVoiceSpeed(speedData: userDefaultsUsecase.speed)
         delegate?.didVoicePich(pitchData: userDefaultsUsecase.pitch)
-        BackgroundAnimationManager.setupAnimation(view: view)
     }
     
     @IBAction func voiceSpeedDidChange(_ sender: UISlider) {
@@ -60,26 +57,5 @@ class SettingViewController: UIViewController {
         voicePichLabel.text = String(pitch)
         userDefaultsUsecase.pitch = pitch
         delegate?.didVoicePich(pitchData: pitch)
-    }
-}
-
-extension SettingViewController: HeaderViewDelegate {
-    func backButtonDidTap() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func defaultButtonDidTap() {
-        showAlert(title: "初期設定に戻しますか？",
-                  actions: [UIAlertAction(title: "はい",
-                                          style: .default) { [weak self] _ in
-            guard let self else { return }
-            voiceSpeedSlider.value = Self.defaultSpeedValue
-            voicePichSlider.value = Self.defaultPitchValue
-            voiceSpeedLabel.text = String(Self.defaultSpeedValue)
-            voicePichLabel.text = String(Self.defaultPitchValue)
-            userDefaultsUsecase.speed = Self.defaultSpeedValue
-            userDefaultsUsecase.pitch = Self.defaultPitchValue
-        }, UIAlertAction(title: "いいえ",
-                         style: .cancel)])
     }
 }

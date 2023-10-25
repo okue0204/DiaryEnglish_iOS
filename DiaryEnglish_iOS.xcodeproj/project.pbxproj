@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C690ECB2AE7DB5C00451294 /* DiaryContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */; };
+		3C690ECD2AE7DB6F00451294 /* DiaryContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */; };
+		3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECE2AE7DE3800451294 /* FooterView.swift */; };
+		3C690ED12AE7DE4700451294 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C690ED02AE7DE4700451294 /* FooterView.xib */; };
+		3C690ED42AE934CA00451294 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ED32AE934CA00451294 /* Tab.swift */; };
 		3C9EA1F02AD807B8007AC1FD /* DotLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9EA1EF2AD807B8007AC1FD /* DotLineView.swift */; };
 		3C9EA2312AD812B5007AC1FD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9EA2302AD812B5007AC1FD /* HeaderView.swift */; };
 		3C9EA2332AD81340007AC1FD /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9EA2322AD81340007AC1FD /* HeaderView.xib */; };
@@ -61,6 +66,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContainerViewController.swift; sourceTree = "<group>"; };
+		3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryContainerViewController.storyboard; sourceTree = "<group>"; };
+		3C690ECE2AE7DE3800451294 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		3C690ED02AE7DE4700451294 /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
+		3C690ED32AE934CA00451294 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		3C9EA1EF2AD807B8007AC1FD /* DotLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLineView.swift; sourceTree = "<group>"; };
 		3C9EA2302AD812B5007AC1FD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3C9EA2322AD81340007AC1FD /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -131,6 +141,8 @@
 			children = (
 				3C9EA2302AD812B5007AC1FD /* HeaderView.swift */,
 				3C9EA2322AD81340007AC1FD /* HeaderView.xib */,
+				3C690ECE2AE7DE3800451294 /* FooterView.swift */,
+				3C690ED02AE7DE4700451294 /* FooterView.xib */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -202,6 +214,8 @@
 		3CCA91BA2AD18CE900E6CC28 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */,
+				3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */,
 				3CCA91BB2AD18CF700E6CC28 /* DiaryListViewController.swift */,
 				3CCA91BD2AD18CFC00E6CC28 /* DiaryListViewController.storyboard */,
 				3CCA91BF2AD18D0B00E6CC28 /* DiaryEditViewController.swift */,
@@ -229,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				3CCA920A2AD4016900E6CC28 /* Season.swift */,
+				3C690ED32AE934CA00451294 /* Tab.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -373,7 +388,9 @@
 				3CCA92102AD4066E00E6CC28 /* fall_animation.json in Resources */,
 				3C9EA2332AD81340007AC1FD /* HeaderView.xib in Resources */,
 				3CCA920E2AD4066600E6CC28 /* winter_animation.json in Resources */,
+				3C690ECD2AE7DB6F00451294 /* DiaryContainerViewController.storyboard in Resources */,
 				3CCA92142AD40D9F00E6CC28 /* summer_animation.json in Resources */,
+				3C690ED12AE7DE4700451294 /* FooterView.xib in Resources */,
 				3CCA918A2AD18A6700E6CC28 /* LaunchScreen.storyboard in Resources */,
 				3CCA92192AD4143C00E6CC28 /* DiaryListTableViewCell.xib in Resources */,
 				3CC390DA2AD5694A007897EB /* NoDataTableViewCell.xib in Resources */,
@@ -413,6 +430,7 @@
 				3CCA91BC2AD18CF700E6CC28 /* DiaryListViewController.swift in Sources */,
 				3CB5A9892AE67AF6009616ED /* UserDefaultUsecase.swift in Sources */,
 				3CCA917E2AD18A6600E6CC28 /* AppDelegate.swift in Sources */,
+				3C690ECB2AE7DB5C00451294 /* DiaryContainerViewController.swift in Sources */,
 				3CB5A98B2AE67B05009616ED /* UserDefaultRepository.swift in Sources */,
 				3CCA91802AD18A6600E6CC28 /* SceneDelegate.swift in Sources */,
 				3CCA91C02AD18D0B00E6CC28 /* DiaryEditViewController.swift in Sources */,
@@ -420,6 +438,8 @@
 				3C9EA2352AD81417007AC1FD /* UIView+DiaryEnglish.swift in Sources */,
 				3CCA920B2AD4016900E6CC28 /* Season.swift in Sources */,
 				3CA1C21A2ADBB39F00DEC693 /* Diary.swift in Sources */,
+				3C690ED42AE934CA00451294 /* Tab.swift in Sources */,
+				3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */,
 				3C9EA1F02AD807B8007AC1FD /* DotLineView.swift in Sources */,
 				3CA1C21E2ADBFB7A00DEC693 /* String+DiaryEnglish.swift in Sources */,
 				3CCA91C42AD18D2000E6CC28 /* SettingViewController.swift in Sources */,
@@ -599,7 +619,7 @@
 				INFOPLIST_FILE = DiaryEnglish_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = DiaryListViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = DiaryContainerViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -631,7 +651,7 @@
 				INFOPLIST_FILE = DiaryEnglish_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = DiaryListViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = DiaryContainerViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

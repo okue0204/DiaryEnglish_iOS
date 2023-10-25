@@ -13,15 +13,6 @@ class DiaryEditViewController: UIViewController {
     enum TransitionType {
         case edit
         case register
-        
-        var title: String {
-            switch self {
-            case .edit:
-                "英語日記編集"
-            case .register:
-                "英語日記登録"
-            }
-        }
     }
     
     enum EditType {
@@ -31,7 +22,7 @@ class DiaryEditViewController: UIViewController {
         case wantToSay
     }
 
-    @IBOutlet weak var headerView: HeaderView!
+    @IBOutlet weak var editHeaderView: UIView!
     @IBOutlet weak var japaneseTextView: UITextView!
     @IBOutlet weak var englishTextView: UITextView!
     @IBOutlet weak var situationTextView: UITextView!
@@ -85,16 +76,19 @@ class DiaryEditViewController: UIViewController {
     
     private func setupLayout() {
         
+        switch transitionType {
+        case .edit:
+            editHeaderView.isHidden = false
+        case .register:
+            editHeaderView.isHidden = true
+        }
+        
         if let diary {
             japaneseTextView.text = diary.japanese
             englishTextView.text = diary.english
             situationTextView.text = diary.situation
             wantToSayTextView.text = diary.wantToSay
         }
-        
-        headerView.delegate = self
-        headerView.title = transitionType.title
-        BackgroundAnimationManager.setupAnimation(view: view)
         
         let toolBar = UIToolbar()
         let okButton = UIBarButtonItem(title: "完了",
@@ -123,10 +117,16 @@ class DiaryEditViewController: UIViewController {
     private func cancellButtonDidTap(_ sender: UIButton) {
         view.endEditing(true)
     }
-}
-
-extension DiaryEditViewController: HeaderViewDelegate {
-    func backButtonDidTap() {
+    
+    @IBAction func backButtonDidTap(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveButtonDidTap(_ sender: Any) {
+        showAlert(title: "保存しました。",
+                  actions: [UIAlertAction(title: "OK",
+                                          style: .default) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }])
     }
 }

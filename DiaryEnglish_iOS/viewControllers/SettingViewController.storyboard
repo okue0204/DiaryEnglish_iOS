@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,22 +19,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spring_background" translatesAutoresizingMaskIntoConstraints="NO" id="412-Ev-AeT">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTg-gO-d7E" customClass="HeaderView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="59" width="393" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="p3L-VH-T02"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowBackButton" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="設定"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowsettingButton" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDeleteButton" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowDefaultButton" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-jg-Dag">
-                                <rect key="frame" x="0.0" y="119" width="393" height="733"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DgE-5T-lsx">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="256"/>
@@ -70,7 +55,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Z6V-11-ASc">
-                                                                <rect key="frame" x="18" y="50.33333333333335" width="357" height="68.666666666666686"/>
+                                                                <rect key="frame" x="18" y="50.333333333333321" width="357" height="68.666666666666686"/>
                                                                 <connections>
                                                                     <action selector="voiceSpeedDidChange:" destination="Y6W-OH-hqX" eventType="valueChanged" id="ODk-eV-NPa"/>
                                                                 </connections>
@@ -119,7 +104,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="olH-Ok-fal">
-                                                                <rect key="frame" x="18" y="50.333333333333321" width="357" height="68.666666666666686"/>
+                                                                <rect key="frame" x="18" y="50.33333333333335" width="357" height="68.666666666666686"/>
                                                                 <connections>
                                                                     <action selector="voicePichDidChange:" destination="Y6W-OH-hqX" eventType="valueChanged" id="n87-EN-alC"/>
                                                                 </connections>
@@ -155,21 +140,17 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bTg-gO-d7E" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="57E-Xw-Lak"/>
                             <constraint firstItem="412-Ev-AeT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7Aw-Rc-R6g"/>
-                            <constraint firstItem="bTg-gO-d7E" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="CQv-YR-Oyl"/>
                             <constraint firstItem="PhO-jg-Dag" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DY2-0X-LZn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="412-Ev-AeT" secondAttribute="trailing" id="HO1-xN-5dD"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bTg-gO-d7E" secondAttribute="trailing" id="KgQ-Pf-CFN"/>
                             <constraint firstItem="412-Ev-AeT" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="MsA-hR-aDU"/>
-                            <constraint firstItem="PhO-jg-Dag" firstAttribute="top" secondItem="bTg-gO-d7E" secondAttribute="bottom" id="Qid-lo-NFg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="PhO-jg-Dag" secondAttribute="bottom" id="R7y-xh-gpW"/>
                             <constraint firstAttribute="bottom" secondItem="412-Ev-AeT" secondAttribute="bottom" id="UBM-gb-E7J"/>
-                            <constraint firstAttribute="bottom" secondItem="PhO-jg-Dag" secondAttribute="bottom" id="Z2A-vg-QdM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PhO-jg-Dag" secondAttribute="trailing" id="cOY-jo-wzs"/>
+                            <constraint firstItem="PhO-jg-Dag" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xNx-JT-LfG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="headerView" destination="bTg-gO-d7E" id="UBD-22-CeY"/>
                         <outlet property="voicePichLabel" destination="TVv-Yo-aR2" id="IsU-89-fiI"/>
                         <outlet property="voicePichSlider" destination="olH-Ok-fal" id="dlD-Kx-K7E"/>
                         <outlet property="voiceSpeedLabel" destination="3FD-33-a44" id="qDL-Ni-rDh"/>
@@ -183,8 +164,5 @@
     </scenes>
     <resources>
         <image name="spring_background" width="2400" height="2000"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

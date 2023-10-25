@@ -14,7 +14,6 @@ class DiaryListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var headerView: HeaderView!
     
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
@@ -75,13 +74,11 @@ class DiaryListViewController: UIViewController {
     }
     
     private func setupLayout() {
-        headerView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.registerCell(tableViewCell: DiaryListTableViewCell.self)
         tableView.registerCell(tableViewCell: NoDataTableViewCell.self)
-        BackgroundAnimationManager.setupAnimation(view: view)
         searchTextField.delegate = self
         searchTextField.textColor = .black
         searchTextField.attributedPlaceholder = NSAttributedString(string: "search", attributes: [.foregroundColor: UIColor.lightGray])
@@ -117,12 +114,6 @@ class DiaryListViewController: UIViewController {
         searchTextField.text = nil
         searchWord = nil
     }
-    
-    @IBAction func addButtonDidTap(_ sender: Any) {
-        let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
-        diaryEditViewController.transitionType = .register
-        navigationController?.pushViewController(diaryEditViewController, animated: true)
-    }
 }
 
 extension DiaryListViewController: UITableViewDelegate {
@@ -131,8 +122,8 @@ extension DiaryListViewController: UITableViewDelegate {
             return
         } else {
             let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
-            diaryEditViewController.transitionType = .edit
             diaryEditViewController.diary = diaries[indexPath.row]
+            diaryEditViewController.transitionType = .edit
             navigationController?.pushViewController(diaryEditViewController, animated: true)
         }
     }
@@ -193,28 +184,6 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
         if let diaryListTableViewCell = cell as? DiaryListTableViewCell,
            let watToSayText = diaryListTableViewCell.watToSayLabel.text {
             setupSynthesizer(voiceText: watToSayText)
-        }
-    }
-}
-
-extension DiaryListViewController: HeaderViewDelegate {
-    func settingButtonDidTap() {
-        let settingViewController = UIStoryboard.settingViewControllerStoryboard.instantiateInitialViewController() as! SettingViewController
-        settingViewController.delegate = self
-        navigationController?.pushViewController(settingViewController, animated: true)
-    }
-    
-    func deleteButtonDidTap() {
-        if diaries.isEmpty {
-            showAlert(title: "日記がありません", actions: [UIAlertAction(title: "OK",
-                                                                 style: .default)])
-        } else {
-            showAlert(title: "全ての日記を削除しますか?", actions: [UIAlertAction(title: "YES",
-                                                                      style: .default) { [weak self] _ in
-                self?.diaries.removeAll()
-                self?.tableView.reloadData()
-            }, UIAlertAction(title: "NO",
-                             style: .cancel)])
         }
     }
 }
