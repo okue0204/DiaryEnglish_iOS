@@ -13,7 +13,7 @@ class DiaryListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchTextField: PaddingTextField!
     
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
@@ -52,7 +52,7 @@ class DiaryListViewController: UIViewController {
     var speedData: Float?
     var pitchData: Float?
     
-    let speechSynthesizer = AVSpeechSynthesizer()
+    var speechSynthesizer = AVSpeechSynthesizer()
     
     private var searchWord: String? {
         didSet {

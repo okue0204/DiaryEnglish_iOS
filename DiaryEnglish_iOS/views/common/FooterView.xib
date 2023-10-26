@@ -28,12 +28,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="131" height="50"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="RM2-qd-YLK">
-                                    <rect key="frame" x="53.666666666666657" y="13" width="24" height="24"/>
+                                    <rect key="frame" x="50.666666666666657" y="10" width="30" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="24" id="9NP-fd-Hkt"/>
-                                        <constraint firstAttribute="width" constant="24" id="hnd-tD-6Ab"/>
+                                        <constraint firstAttribute="height" constant="30" id="9NP-fd-Hkt"/>
+                                        <constraint firstAttribute="width" constant="30" id="hnd-tD-6Ab"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFk-lE-DFa">
@@ -59,11 +59,11 @@
                             <rect key="frame" x="131" y="0.0" width="131" height="50"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_diary" translatesAutoresizingMaskIntoConstraints="NO" id="3wE-mH-TG9">
-                                    <rect key="frame" x="53.666666666666657" y="13" width="24" height="24"/>
+                                    <rect key="frame" x="50.666666666666657" y="10" width="30" height="30"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="YwP-v6-qyp"/>
-                                        <constraint firstAttribute="height" constant="24" id="xy1-5Y-aGG"/>
+                                        <constraint firstAttribute="width" constant="30" id="YwP-v6-qyp"/>
+                                        <constraint firstAttribute="height" constant="30" id="xy1-5Y-aGG"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPO-jJ-ZT6">
@@ -85,11 +85,11 @@
                             <rect key="frame" x="262" y="0.0" width="131" height="50"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-XH-EQD">
-                                    <rect key="frame" x="53.666666666666686" y="13" width="24" height="24"/>
+                                    <rect key="frame" x="50.666666666666686" y="10" width="30" height="30"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="24" id="Lq8-pv-jQ2"/>
-                                        <constraint firstAttribute="width" constant="24" id="ySL-Qa-IjY"/>
+                                        <constraint firstAttribute="height" constant="30" id="Lq8-pv-jQ2"/>
+                                        <constraint firstAttribute="width" constant="30" id="ySL-Qa-IjY"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-C2-4Rw">

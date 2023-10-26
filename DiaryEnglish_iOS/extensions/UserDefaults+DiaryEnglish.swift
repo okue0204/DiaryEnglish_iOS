@@ -12,6 +12,8 @@ extension UserDefaults {
     
     static let speedKey = "speedKey"
     static let pitchKey = "pitchKey"
+    static let isSpeedChangeKey = "isSpeedChangeKey"
+    static let isPitchChangeKey = "isPitchChangeKey"
     
     static var speed: Float {
         get {
@@ -28,6 +30,24 @@ extension UserDefaults {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: Self.pitchKey)
+        }
+    }
+    
+    static var isSpeedChange: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: Self.isSpeedChangeKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Self.isSpeedChangeKey)
+        }
+    }
+    
+    static var isPitckChange: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: Self.isPitchChangeKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Self.isPitchChangeKey)
         }
     }
 }

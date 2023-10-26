@@ -11,6 +11,8 @@ import SwiftyDI
 protocol UserDefaultUsecase {
     var speed: Float { get set }
     var pitch: Float { get set }
+    var isSpeedChange: Bool { get set }
+    var isPitchChange: Bool { get set }
 }
 
 class UserDefaultUsecaseImpl: UserDefaultUsecase {
@@ -33,6 +35,24 @@ class UserDefaultUsecaseImpl: UserDefaultUsecase {
         }
         set {
             repository.pitch = newValue
+        }
+    }
+    
+    var isSpeedChange: Bool {
+        get {
+            repository.isSpeedChange
+        }
+        set {
+            repository.isSpeedChange = newValue
+        }
+    }
+    
+    var isPitchChange: Bool {
+        get {
+            repository.isPitchChange
+        }
+        set {
+            repository.isPitchChange = newValue
         }
     }
 }

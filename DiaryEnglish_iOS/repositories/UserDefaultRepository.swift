@@ -10,6 +10,8 @@ import Foundation
 protocol UserDefaultRepository {
     var speed: Float { get set }
     var pitch: Float { get set }
+    var isSpeedChange: Bool { get set }
+    var isPitchChange: Bool { get set }
 }
 
 class UserDefaultRepositoryImpl: UserDefaultRepository {
@@ -28,6 +30,24 @@ class UserDefaultRepositoryImpl: UserDefaultRepository {
         }
         set {
             UserDefaults.pitch = newValue
+        }
+    }
+    
+    var isSpeedChange: Bool {
+        get {
+            UserDefaults.isSpeedChange
+        }
+        set {
+            UserDefaults.isSpeedChange = newValue
+        }
+    }
+    
+    var isPitchChange: Bool {
+        get {
+            UserDefaults.isPitckChange
+        }
+        set {
+            UserDefaults.isPitckChange = newValue
         }
     }
 }

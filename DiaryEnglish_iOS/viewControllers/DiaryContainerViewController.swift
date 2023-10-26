@@ -36,6 +36,7 @@ class DiaryContainerViewController: UIViewController {
         guard selectTab != oldTab else {
             return
         }
+        containerView.subviews.forEach { $0.removeFromSuperview() }
         let viewController = viewControllers[selectTab.rawValue]
         if let diaryEditViewController = viewController as? DiaryEditViewController {
             diaryEditViewController.transitionType = .register

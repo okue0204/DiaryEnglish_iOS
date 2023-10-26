@@ -37,18 +37,32 @@ class SettingViewController: UIViewController {
     private func setupLayout() {
         voicePichSlider.minimumValue = 0.5
         voicePichSlider.maximumValue = 2.0
-        voiceSpeedLabel.text = String(userDefaultsUsecase.speed)
-        voicePichLabel.text = String(userDefaultsUsecase.pitch)
-        voiceSpeedSlider.value = userDefaultsUsecase.speed
-        voicePichSlider.value = userDefaultsUsecase.pitch
-        delegate?.didVoiceSpeed(speedData: userDefaultsUsecase.speed)
-        delegate?.didVoicePich(pitchData: userDefaultsUsecase.pitch)
+        
+        let speed = if userDefaultsUsecase.isSpeedChange {
+            userDefaultsUsecase.speed
+        } else {
+            Self.defaultSpeedValue
+        }
+        
+        let pitch = if userDefaultsUsecase.isPitchChange {
+            userDefaultsUsecase.pitch
+        } else {
+            Self.defaultPitchValue
+        }
+        
+        voiceSpeedSlider.value = speed
+        voicePichSlider.value = pitch
+        voiceSpeedLabel.text = String(speed)
+        voicePichLabel.text = String(pitch)
+        delegate?.didVoiceSpeed(speedData: speed)
+        delegate?.didVoicePich(pitchData: pitch)
     }
     
     @IBAction func voiceSpeedDidChange(_ sender: UISlider) {
         let speed = floor(sender.value * 10) / 10
         voiceSpeedLabel.text = String(speed)
         userDefaultsUsecase.speed = speed
+        userDefaultsUsecase.isSpeedChange = true
         delegate?.didVoiceSpeed(speedData: speed)
     }
     
@@ -56,6 +70,7 @@ class SettingViewController: UIViewController {
         let pitch = floor(sender.value * 10) / 10
         voicePichLabel.text = String(pitch)
         userDefaultsUsecase.pitch = pitch
+        userDefaultsUsecase.isPitchChange = true
         delegate?.didVoicePich(pitchData: pitch)
     }
 }
