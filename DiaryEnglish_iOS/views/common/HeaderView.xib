@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="saveButton" destination="b5U-eo-meF" id="QOV-oX-JUg"/>
                 <outlet property="titleLabel" destination="y5u-B9-Peg" id="uc2-h7-wXz"/>
             </connections>
         </placeholder>
@@ -24,11 +25,27 @@
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5U-eo-meF">
+                    <rect key="frame" x="333" y="13.666666666666664" width="50" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="tEW-Oq-YQO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="保存">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="didDiarySave:" destination="-1" eventType="touchUpInside" id="bz0-eS-krr"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b5U-eo-meF" secondAttribute="trailing" constant="10" id="0kH-Yi-JMo"/>
                 <constraint firstItem="y5u-B9-Peg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TV9-3S-U8h"/>
+                <constraint firstItem="b5U-eo-meF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aFi-zh-hfs"/>
                 <constraint firstItem="y5u-B9-Peg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="d6Y-81-JbJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

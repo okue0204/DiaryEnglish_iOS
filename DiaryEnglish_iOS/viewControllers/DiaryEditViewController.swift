@@ -41,6 +41,13 @@ class DiaryEditViewController: UIViewController {
     var transitionType: TransitionType = .edit
     var cancellable = Set<AnyCancellable>()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let containerViewController = self.parent as? DiaryContainerViewController {
+            containerViewController.headerView.saveButton.isHidden = false
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

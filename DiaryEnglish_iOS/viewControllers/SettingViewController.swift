@@ -8,11 +8,6 @@
 import UIKit
 import SwiftyDI
 
-protocol SettingViewControllerDelegate: AnyObject {
-    func didVoiceSpeed(speedData: Float)
-    func didVoicePich(pitchData: Float)
-}
-
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var voiceSpeedSlider: UISlider!
@@ -20,13 +15,19 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var voiceSpeedLabel: UILabel!
     @IBOutlet weak var voicePichLabel: UILabel!
     
-    private static let defaultSpeedValue: Float = 0.5
-    private static let defaultPitchValue: Float = 1.0
+
     
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
     
-    weak var delegate: SettingViewControllerDelegate?
+    let speecher = Speecher.shard
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let containerViewController = self.parent as? DiaryContainerViewController {
+            containerViewController.headerView.saveButton.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,21 +42,19 @@ class SettingViewController: UIViewController {
         let speed = if userDefaultsUsecase.isSpeedChange {
             userDefaultsUsecase.speed
         } else {
-            Self.defaultSpeedValue
+            speecher.defaultSpeedValue
         }
         
         let pitch = if userDefaultsUsecase.isPitchChange {
             userDefaultsUsecase.pitch
         } else {
-            Self.defaultPitchValue
+            speecher.defaultPitchValue
         }
         
         voiceSpeedSlider.value = speed
         voicePichSlider.value = pitch
         voiceSpeedLabel.text = String(speed)
         voicePichLabel.text = String(pitch)
-        delegate?.didVoiceSpeed(speedData: speed)
-        delegate?.didVoicePich(pitchData: pitch)
     }
     
     @IBAction func voiceSpeedDidChange(_ sender: UISlider) {
@@ -63,7 +62,7 @@ class SettingViewController: UIViewController {
         voiceSpeedLabel.text = String(speed)
         userDefaultsUsecase.speed = speed
         userDefaultsUsecase.isSpeedChange = true
-        delegate?.didVoiceSpeed(speedData: speed)
+        userDefaultsUsecase.speed = speed
     }
     
     @IBAction func voicePichDidChange(_ sender: UISlider) {
@@ -71,6 +70,7 @@ class SettingViewController: UIViewController {
         voicePichLabel.text = String(pitch)
         userDefaultsUsecase.pitch = pitch
         userDefaultsUsecase.isPitchChange = true
-        delegate?.didVoicePich(pitchData: pitch)
+        userDefaultsUsecase.pitch = pitch
+        
     }
 }

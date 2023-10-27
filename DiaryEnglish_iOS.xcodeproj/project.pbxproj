@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1D637D2AEBDD60005869AC /* Speecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D637C2AEBDD60005869AC /* Speecher.swift */; };
 		3C459F732AEA1FE60082CF25 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C459F722AEA1FE60082CF25 /* PaddingTextField.swift */; };
 		3C690ECB2AE7DB5C00451294 /* DiaryContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */; };
 		3C690ECD2AE7DB6F00451294 /* DiaryContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C1D637C2AEBDD60005869AC /* Speecher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speecher.swift; sourceTree = "<group>"; };
 		3C459F722AEA1FE60082CF25 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContainerViewController.swift; sourceTree = "<group>"; };
 		3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryContainerViewController.storyboard; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				3CC390DF2AD56AAF007897EB /* BackgroundAnimationManager.swift */,
 				3C9EA1EF2AD807B8007AC1FD /* DotLineView.swift */,
+				3C1D637C2AEBDD60005869AC /* Speecher.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				3CB5A98D2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift in Sources */,
 				3CC390E02AD56AAF007897EB /* BackgroundAnimationManager.swift in Sources */,
 				3CCA921B2AD4255C00E6CC28 /* UITableView+DiaryEnglish.swift in Sources */,
+				3C1D637D2AEBDD60005869AC /* Speecher.swift in Sources */,
 				3CCA91BC2AD18CF700E6CC28 /* DiaryListViewController.swift in Sources */,
 				3CB5A9892AE67AF6009616ED /* UserDefaultUsecase.swift in Sources */,
 				3CCA917E2AD18A6600E6CC28 /* AppDelegate.swift in Sources */,

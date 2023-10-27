@@ -26,6 +26,7 @@ class DiaryContainerViewController: UIViewController {
     }
     
     private func setupLayout() {
+        headerView.delegate = self
         changeViewController(selectTab: .home)
         footerView.updateLayout(tab: .home)
         footerView.delegate = self
@@ -52,5 +53,13 @@ class DiaryContainerViewController: UIViewController {
 extension DiaryContainerViewController: FooterViewDelegate {
     func tabDidSelect(selectTab: Tab, oldTab: Tab) {
         changeViewController(selectTab: selectTab, oldTab: oldTab)
+    }
+}
+
+extension DiaryContainerViewController: HeaderViewDelegate {
+    func didDiarySave() {
+        showAlert(title: "保存しました。",
+                  actions: [UIAlertAction(title: "OK",
+                                          style: .default)])
     }
 }

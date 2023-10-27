@@ -52,7 +52,7 @@ class DiaryListViewController: UIViewController {
     var speedData: Float?
     var pitchData: Float?
     
-    var speechSynthesizer = AVSpeechSynthesizer()
+    let speecher = Speecher.shard
     
     private var searchWord: String? {
         didSet {
@@ -65,6 +65,13 @@ class DiaryListViewController: UIViewController {
             return diaries
         }
         return diaries.filter(searchWord: searchWord)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let containerViewController = self.parent as? DiaryContainerViewController {
+            containerViewController.headerView.saveButton.isHidden = true
+        }
     }
     
     override func viewDidLoad() {
@@ -92,18 +99,6 @@ class DiaryListViewController: UIViewController {
         toolBar.sizeToFit()
         toolBar.setItems([cancellButton, spacer], animated: true)
         searchTextField.inputAccessoryView = toolBar
-    }
-    
-    private func setupSynthesizer(voiceText: String) {
-        let utterance = AVSpeechUtterance.init(string: voiceText)
-        if let speedData {
-            utterance.rate = speedData
-        }
-        if let pitchData {
-            utterance.pitchMultiplier = pitchData
-        }
-        utterance.voice = AVSpeechSynthesisVoice.init(language: "en-US")
-        speechSynthesizer.speak(utterance)
     }
     
     @objc private func cancellButtonDidTap(_ sender: UIButton) {
@@ -176,26 +171,19 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
     func englishDiarySpeechButtonDidTap(cell: UITableViewCell) {
         if let diaryListTableViewCell = cell as? DiaryListTableViewCell,
            let englishText = diaryListTableViewCell.englishDiaryLabel.text {
-            setupSynthesizer(voiceText: englishText)
+            speecher.speech(voiceText: englishText,
+                            speed: userDefaultsUsecase.isSpeedChange ? userDefaultsUsecase.speed : speecher.defaultSpeedValue,
+                            pitch: userDefaultsUsecase.isPitchChange ? userDefaultsUsecase.pitch : speecher.defaultPitchValue)
         }
     }
     
     func wantToSaySpeechButtonDidTap(cell: UITableViewCell) {
         if let diaryListTableViewCell = cell as? DiaryListTableViewCell,
            let watToSayText = diaryListTableViewCell.watToSayLabel.text {
-            setupSynthesizer(voiceText: watToSayText)
+            speecher.speech(voiceText: watToSayText,
+                            speed: userDefaultsUsecase.isSpeedChange ? userDefaultsUsecase.speed : speecher.defaultSpeedValue,
+                            pitch: userDefaultsUsecase.isPitchChange ? userDefaultsUsecase.pitch : speecher.defaultPitchValue)
         }
-    }
-}
-
-extension DiaryListViewController: SettingViewControllerDelegate {
-    func didVoiceSpeed(speedData: Float) {
-        self.speedData = speedData
-    }
-    
-    func didVoicePich(pitchData: Float) {
-        self.pitchData = pitchData
-        userDefaultsUsecase.pitch = pitchData
     }
 }
 

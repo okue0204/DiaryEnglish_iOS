@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol HeaderViewDelegate: AnyObject {
+    func didDiarySave()
+}
+
 class HeaderView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    weak var delegate: HeaderViewDelegate?
     
     @IBInspectable var title: String? {
         get {
@@ -17,6 +24,15 @@ class HeaderView: UIView {
         }
         set {
             titleLabel.text = newValue
+        }
+    }
+    
+    @IBInspectable var isShowSaveButton: Bool {
+        get {
+            saveButton.isHidden
+        }
+        set {
+            saveButton.isHidden = newValue
         }
     }
     
@@ -28,5 +44,9 @@ class HeaderView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadNib()
+    }
+    
+    @IBAction func didDiarySave(_ sender: Any) {
+        delegate?.didDiarySave()
     }
 }
