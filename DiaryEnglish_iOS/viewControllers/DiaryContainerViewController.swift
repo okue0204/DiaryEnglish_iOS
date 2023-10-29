@@ -29,8 +29,8 @@ class DiaryContainerViewController: UIViewController {
     
     private func setupLayout() {
         headerView.delegate = self
-        changeViewController(selectTab: .home)
         footerView.delegate = self
+        changeViewController(selectTab: .home)
         BackgroundAnimationManager.setupAnimation(view: view)
     }
     
@@ -45,6 +45,7 @@ class DiaryContainerViewController: UIViewController {
             diaryEditViewController.transitionType = .register
         }
         footerView.updateLayout(tab: selectTab)
+        footerView.selectTab(tabType: selectTab)
         headerView.title = selectTab.title
         addChild(viewController)
         containerView.frame = viewController.view.bounds

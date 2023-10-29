@@ -49,7 +49,7 @@ class FooterView: UIView {
         }
     }
     
-    private func selectTab(tabType: Tab) {
+    func selectTab(tabType: Tab) {
         let old = selectTab
         selectTab = tabType
         delegate?.tabDidSelect(selectTab: selectTab, oldTab: old)

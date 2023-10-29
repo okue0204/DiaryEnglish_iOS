@@ -28,6 +28,7 @@ class CoreDataRepository {
     
     func save<T: NSManagedObject>(entity: T) {
         persistentContainer.viewContext.insert(entity)
+        saveContext()
     }
 
     func saveContext() {
@@ -52,6 +53,7 @@ class CoreDataRepository {
                 updateData.setValue(requestDiaryData.english, forKey: "english")
                 updateData.setValue(requestDiaryData.situation, forKey: "situation")
                 updateData.setValue(requestDiaryData.wantToSay, forKey: "wantToSay")
+                saveContext()
             }
         } catch {
             fatalError("Invalid deleteData.")
@@ -73,6 +75,7 @@ class CoreDataRepository {
             let diaries = try persistentContainer.viewContext.fetch(fetchRequest)
             if let deleteData = diaries.first(where: { $0.id == id }) {
                 persistentContainer.viewContext.delete(deleteData)
+                saveContext()
             }
         } catch {
             fatalError("Invalid deleteData.")

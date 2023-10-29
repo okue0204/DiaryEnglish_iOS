@@ -101,7 +101,11 @@ extension DiaryListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            guard let id = diaries[indexPath.row].id else {
+                return
+            }
             diaries.remove(at: indexPath.row)
+            CoreDataUsecase.shard.delete(id: id)
             tableView.reloadData()
         }
     }
