@@ -18,6 +18,8 @@ class DiaryContainerViewController: UIViewController {
         UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController()!,
         UIStoryboard.settingViewControllerStoryboard.instantiateInitialViewController()!
     ]
+    
+    var selectTab: Tab = .home
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,6 @@ class DiaryContainerViewController: UIViewController {
     private func setupLayout() {
         headerView.delegate = self
         changeViewController(selectTab: .home)
-        footerView.updateLayout(tab: .home)
         footerView.delegate = self
         BackgroundAnimationManager.setupAnimation(view: view)
     }
@@ -37,11 +38,13 @@ class DiaryContainerViewController: UIViewController {
         guard selectTab != oldTab else {
             return
         }
+        self.selectTab = selectTab
         containerView.subviews.forEach { $0.removeFromSuperview() }
         let viewController = viewControllers[selectTab.rawValue]
         if let diaryEditViewController = viewController as? DiaryEditViewController {
             diaryEditViewController.transitionType = .register
         }
+        footerView.updateLayout(tab: selectTab)
         headerView.title = selectTab.title
         addChild(viewController)
         containerView.frame = viewController.view.bounds
@@ -58,8 +61,12 @@ extension DiaryContainerViewController: FooterViewDelegate {
 
 extension DiaryContainerViewController: HeaderViewDelegate {
     func didDiarySave() {
-        showAlert(title: "保存しました。",
-                  actions: [UIAlertAction(title: "OK",
-                                          style: .default)])
+        if let diaryEditViewController = viewControllers[selectTab.rawValue] as? DiaryEditViewController {
+            diaryEditViewController.transitionType = .register
+            diaryEditViewController.dairyDataSave { [weak self] in
+                guard let self else { return }
+                changeViewController(selectTab: .home)
+            }
+        }
     }
 }

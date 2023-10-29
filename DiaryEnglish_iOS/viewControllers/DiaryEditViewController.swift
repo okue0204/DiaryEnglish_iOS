@@ -14,13 +14,6 @@ class DiaryEditViewController: UIViewController {
         case edit
         case register
     }
-    
-    enum EditType {
-        case japanese
-        case english
-        case situation
-        case wantToSay
-    }
 
     @IBOutlet weak var editHeaderView: UIView!
     @IBOutlet weak var japaneseTextView: UITextView!
@@ -29,7 +22,6 @@ class DiaryEditViewController: UIViewController {
     @IBOutlet weak var wantToSayTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     lazy var textViews: [UITextView] = [
         japaneseTextView,
         englishTextView,
@@ -37,15 +29,17 @@ class DiaryEditViewController: UIViewController {
         wantToSayTextView
     ]
     
-    var diary: Diary?
     var transitionType: TransitionType = .edit
     var cancellable = Set<AnyCancellable>()
+    var requestDiaryData = RequestDiaryData()
+    var diary: Diary?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let containerViewController = self.parent as? DiaryContainerViewController {
             containerViewController.headerView.saveButton.isHidden = false
         }
+        updateLayout()
     }
     
     override func viewDidLoad() {
@@ -82,7 +76,7 @@ class DiaryEditViewController: UIViewController {
     }
     
     private func setupLayout() {
-        
+        textViews.forEach { $0.delegate = self }
         switch transitionType {
         case .edit:
             editHeaderView.isHidden = false
@@ -95,6 +89,20 @@ class DiaryEditViewController: UIViewController {
             englishTextView.text = diary.english
             situationTextView.text = diary.situation
             wantToSayTextView.text = diary.wantToSay
+            
+            if let japanese = diary.japanese,
+               let english = diary.english,
+               let situation = diary.situation,
+               let wantToSay = diary.wantToSay,
+               let id = diary.id {
+                requestDiaryData.japanese = japanese
+                requestDiaryData.english = english
+                requestDiaryData.situation = situation
+                requestDiaryData.wantToSay = wantToSay
+                requestDiaryData.id = id
+            }
+        } else {
+            textViews.forEach { $0.text = nil }
         }
         
         let toolBar = UIToolbar()
@@ -112,7 +120,30 @@ class DiaryEditViewController: UIViewController {
         toolBar.setItems([cancellButton, space, okButton], animated: true)
         toolBar.sizeToFit()
         textViews.forEach { $0.inputAccessoryView = toolBar }
-        
+    }
+    
+    private func updateLayout() {
+        if case .register = transitionType {
+            textViews.forEach { $0.text = nil }
+        }
+    }
+    
+    func dairyDataSave(completionHandler: (() -> Void)? = nil) {
+        showAlert(title: "保存しました。",
+                  actions: [UIAlertAction(title: "OK",
+                                          style: .default) { [weak self] _ in
+            guard let self else { return }
+            switch transitionType {
+            case .edit:
+                CoreDataUsecase.shard.update(requestDiaryData: requestDiaryData)
+                navigationController?.popViewController(animated: true)
+            case .register:
+                let id = NSUUID().uuidString
+                requestDiaryData.id = id
+                CoreDataUsecase.shard.save(requestDiaryData: requestDiaryData)
+                completionHandler?()
+            }
+        }])
     }
     
     @objc
@@ -130,10 +161,23 @@ class DiaryEditViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: Any) {
-        showAlert(title: "保存しました。",
-                  actions: [UIAlertAction(title: "OK",
-                                          style: .default) { [weak self] _ in
-            self?.navigationController?.popViewController(animated: true)
-        }])
+        dairyDataSave()
+    }
+}
+
+extension DiaryEditViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        switch textView {
+        case japaneseTextView:
+            requestDiaryData.japanese = textView.text
+        case englishTextView:
+            requestDiaryData.english = textView.text
+        case situationTextView:
+            requestDiaryData.situation = textView.text
+        case wantToSayTextView:
+            requestDiaryData.wantToSay = textView.text
+        default:
+            break
+        }
     }
 }

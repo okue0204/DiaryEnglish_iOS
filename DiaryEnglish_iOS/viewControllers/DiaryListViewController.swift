@@ -18,37 +18,7 @@ class DiaryListViewController: UIViewController {
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
     
-    var diaries: [Diary] = [
-        Diary(japanese: "今日は胸トレをした。とても疲れた。明日は足トレをするよ。",
-              english: "I did workout for chest so very tired, I`m going to work out for leg",
-              situation: "同僚にジムの話をしている時",
-              wantToSay: "I did workout for chest"),
-        Diary(japanese: "えええ",
-              english: "huuu",
-              situation: "",
-              wantToSay: ""),
-        Diary(japanese: "ううう",
-              english: "huuu",
-              situation: "",
-              wantToSay: ""),
-        Diary(japanese: "いい",
-              english: "huuu",
-              situation: "",
-              wantToSay: ""),
-        Diary(japanese: "ああ",
-              english: "v",
-              situation: "",
-              wantToSay: ""),
-        Diary(japanese: "おお",
-              english: "huuu",
-              situation: "",
-              wantToSay: ""),
-        Diary(japanese: "かかか",
-              english: "when I was riding",
-              situation: "",
-              wantToSay: ""),
-    ]
-    
+    var diaries: [Diary] = []
     var speedData: Float?
     var pitchData: Float?
     
@@ -72,12 +42,18 @@ class DiaryListViewController: UIViewController {
         if let containerViewController = self.parent as? DiaryContainerViewController {
             containerViewController.headerView.saveButton.isHidden = true
         }
+        fetchDiaryData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupLayout()
+    }
+    
+    private func fetchDiaryData() {
+        diaries = CoreDataUsecase.shard.fetchData()
+        tableView.reloadData()
     }
     
     private func setupLayout() {
@@ -117,7 +93,7 @@ extension DiaryListViewController: UITableViewDelegate {
             return
         } else {
             let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
-            diaryEditViewController.diary = diaries[indexPath.row]
+            diaryEditViewController.diary = filteredDiaries[indexPath.row]
             diaryEditViewController.transitionType = .edit
             navigationController?.pushViewController(diaryEditViewController, animated: true)
         }
@@ -137,7 +113,7 @@ extension DiaryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if diaries.isEmpty {
+        if filteredDiaries.isEmpty {
             return 1
         } else {
             return filteredDiaries.count
@@ -145,7 +121,7 @@ extension DiaryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if diaries.isEmpty {
+        if filteredDiaries.isEmpty {
             let cell = tableView.dequeueReusableCell(tableViewCell: NoDataTableViewCell.self, indexPath: indexPath) as! NoDataTableViewCell
             return cell
         } else {
@@ -190,11 +166,13 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
 fileprivate extension Array where Element == Diary {
     func filter(searchWord: String) -> [Diary] {
         return filter {
-            if let situation = $0.situation, let wantToSay = $0.wantToSay {
-                return $0.english.contains(searchWord) || $0.japanese.contains(searchWord) || situation.contains(searchWord) || wantToSay.contains(searchWord)
-            } else {
-                return $0.english.contains(searchWord) || $0.japanese.contains(searchWord)
+            guard let english = $0.english,
+                  let japanese = $0.japanese,
+                  let situation = $0.situation,
+                  let wantToSay = $0.wantToSay else {
+                return false
             }
+            return english.contains(searchWord) || japanese.contains(searchWord) || situation.contains(searchWord) || wantToSay.contains(searchWord)
         }
     }
 }
