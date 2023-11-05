@@ -17,6 +17,9 @@ class FooterView: UIView {
     @IBOutlet weak var addDiaryImageView: UIImageView!
     @IBOutlet weak var settingButtonImageView: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var homeLabel: UILabel!
+    @IBOutlet weak var addDiaryLabel: UILabel!
+    @IBOutlet weak var settingLabel: UILabel!
     
     weak var delegate: FooterViewDelegate?
     
@@ -38,11 +41,18 @@ class FooterView: UIView {
         loadNib()
     }
     
-    func updateLayout(tab: Tab) {
+    private func updateLayout(selectTab: Tab, oldTab: Tab) {
         stackView.subviews.forEach { view in
-            let selectColor = view.tag == tab.rawValue ? UIColor.systemPink : .black
+            let selectColor = view.tag == selectTab.rawValue ? UIColor.systemPink : .lightGray
             view.subviews.forEach {
-                if let imageView = $0 as? UIImageView {
+                if let label = $0 as? UILabel {
+                    label.textColor = selectColor
+                } else if let imageView = $0 as? UIImageView {
+                    if view.tag == selectTab.rawValue {
+                        imageView.image = selectTab.imageFil
+                    } else if view.tag == oldTab.rawValue {
+                        imageView.image = oldTab.image
+                    }
                     imageView.tintColor = selectColor
                 }
             }
@@ -52,21 +62,19 @@ class FooterView: UIView {
     func selectTab(tabType: Tab) {
         let old = selectTab
         selectTab = tabType
+        updateLayout(selectTab: selectTab, oldTab: old)
         delegate?.tabDidSelect(selectTab: selectTab, oldTab: old)
     }
     
     @IBAction func homeButtonDidTap(_ sender: Any) {
-        updateLayout(tab: .home)
         selectTab(tabType: .home)
     }
     
     @IBAction func addDiaryButtonDidTap(_ sender: Any) {
-        updateLayout(tab: .addDiary)
         selectTab(tabType: .addDiary)
     }
     
     @IBAction func settingButtonDidTap(_ sender: Any) {
-        updateLayout(tab: .setting)
         selectTab(tabType: .setting)
     }
 }

@@ -44,7 +44,6 @@ class DiaryContainerViewController: UIViewController {
         if let diaryEditViewController = viewController as? DiaryEditViewController {
             diaryEditViewController.transitionType = .register
         }
-        footerView.updateLayout(tab: selectTab)
         footerView.selectTab(tabType: selectTab)
         headerView.title = selectTab.title
         addChild(viewController)
