@@ -34,19 +34,19 @@ class DiaryEditViewController: UIViewController {
     var requestDiaryData = RequestDiaryData()
     var diary: Diary?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupKeyboardPublisher()
+        setupLayout()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let containerViewController = self.parent as? DiaryContainerViewController {
             containerViewController.headerView.saveButton.isHidden = false
         }
         updateLayout()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupKeyboardPublisher()
-        setupLayout()
     }
     
     private func setupKeyboardPublisher() {
@@ -76,14 +76,6 @@ class DiaryEditViewController: UIViewController {
     }
     
     private func setupLayout() {
-        textViews.forEach { $0.delegate = self }
-        switch transitionType {
-        case .edit:
-            editHeaderView.isHidden = false
-        case .register:
-            editHeaderView.isHidden = true
-        }
-        
         if let diary {
             japaneseTextView.text = diary.japanese
             englishTextView.text = diary.english
@@ -120,30 +112,97 @@ class DiaryEditViewController: UIViewController {
         toolBar.setItems([cancellButton, space, okButton], animated: true)
         toolBar.sizeToFit()
         textViews.forEach { $0.inputAccessoryView = toolBar }
+        
+        textViews.forEach { $0.delegate = self }
+        switch transitionType {
+        case .edit:
+            editHeaderView.isHidden = false
+        case .register:
+            editHeaderView.isHidden = true
+        }
+        
+        textViews.forEach {
+            $0.layer.cornerRadius = 10
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.layer.borderWidth = 1.0
+            $0.backgroundColor = .white
+        }
     }
     
     private func updateLayout() {
         if case .register = transitionType {
             textViews.forEach { $0.text = nil }
+            setupPlaceHolder()
+        }
+    }
+    
+    private func setupPlaceHolder() {
+        textViews.forEach {
+            let placeHolderLabel: UILabel = {
+                let label = UILabel()
+                label.textColor = .lightGray
+                label.numberOfLines = 0
+                label.font = .systemFont(ofSize: 14)
+                label.translatesAutoresizingMaskIntoConstraints = false
+                return label
+            }()
+            $0.addSubview(placeHolderLabel)
+            $0.topAnchor.constraint(equalTo: placeHolderLabel.topAnchor, constant: -10).isActive = true
+            $0.leadingAnchor.constraint(equalTo: placeHolderLabel.leadingAnchor, constant: -8).isActive = true
+            
+            switch $0 {
+            case japaneseTextView:
+                japaneseTextView.alpha = japaneseTextView.text.isEmpty ? 1 : 0
+                placeHolderLabel.text = "日記又は覚えたいフレーズを記入しよう！"
+            case englishTextView:
+                englishTextView.alpha = englishTextView.text.isEmpty ? 1 : 0
+                placeHolderLabel.text = "日本語日記を英語に変換してみよう！"
+            case situationTextView:
+                situationTextView.alpha = situationTextView.text.isEmpty ? 1 : 0
+                placeHolderLabel.text = "言葉が出なかったのはどんなシチュエーションだった？"
+            case wantToSayTextView:
+                wantToSayTextView.alpha = wantToSayTextView.text.isEmpty ? 1 : 0
+                placeHolderLabel.text = "絶対覚えたい１文を記入しよう！"
+            default:
+                break
+            }
+        }
+    }
+    
+    private func displayPlaceHodler(textView: UITextView, updateText: String) {
+        textView.subviews.forEach {
+            if let label = $0 as? UILabel {
+                if updateText.isEmpty {
+                    label.alpha = 1
+                } else {
+                    label.alpha = 0
+                }
+            }
         }
     }
     
     func dairyDataSave(completionHandler: (() -> Void)? = nil) {
-        showAlert(title: "保存しました。",
-                  actions: [UIAlertAction(title: "OK",
-                                          style: .default) { [weak self] _ in
-            guard let self else { return }
-            switch transitionType {
-            case .edit:
-                CoreDataUsecase.shard.update(requestDiaryData: requestDiaryData)
-                navigationController?.popViewController(animated: true)
-            case .register:
-                let id = NSUUID().uuidString
-                requestDiaryData.id = id
-                CoreDataUsecase.shard.save(requestDiaryData: requestDiaryData)
-                completionHandler?()
-            }
-        }])
+        if japaneseTextView.text.isEmpty, englishTextView.text.isEmpty {
+            showAlert(title: "入力して下さい",
+                      actions: [UIAlertAction(title: "OK",
+                                              style: .default)])
+        } else {
+            showAlert(title: "保存しました。",
+                      actions: [UIAlertAction(title: "OK",
+                                              style: .default) { [weak self] _ in
+                guard let self else { return }
+                switch transitionType {
+                case .edit:
+                    CoreDataUsecase.shard.update(requestDiaryData: requestDiaryData)
+                    navigationController?.popViewController(animated: true)
+                case .register:
+                    let id = NSUUID().uuidString
+                    requestDiaryData.id = id
+                    CoreDataUsecase.shard.save(requestDiaryData: requestDiaryData)
+                    completionHandler?()
+                }
+            }])
+        }
     }
     
     @objc
@@ -179,5 +238,25 @@ extension DiaryEditViewController: UITextViewDelegate {
         default:
             break
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if let inputText = textView.text,
+           let range = Range(range, in: inputText) {
+            let updateText = inputText.replacingCharacters(in: range, with: text)
+            switch textView {
+            case japaneseTextView:
+                displayPlaceHodler(textView: japaneseTextView, updateText: updateText)
+            case englishTextView:
+                displayPlaceHodler(textView: englishTextView, updateText: updateText)
+            case situationTextView:
+                displayPlaceHodler(textView: situationTextView, updateText: updateText)
+            case wantToSayTextView:
+                displayPlaceHodler(textView: wantToSayTextView, updateText: updateText)
+            default:
+                break
+            }
+        }
+        return true
     }
 }

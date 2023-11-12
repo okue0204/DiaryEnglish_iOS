@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,15 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spring_background" translatesAutoresizingMaskIntoConstraints="NO" id="O2y-11-7bY">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eqx-o2-Wc1" customClass="HeaderView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aCW-9z-iZJ"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhf-py-lyx">
+                                <rect key="frame" x="0.0" y="818" width="393" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbH-8o-VZd">
+                                <rect key="frame" x="0.0" y="109" width="393" height="649"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLq-ua-Wz8" customClass="FooterView" customModule="DiaryEnglish_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="758" width="393" height="60"/>
@@ -34,17 +38,9 @@
                                     <constraint firstAttribute="height" constant="60" id="Fo3-e8-ZAC"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhf-py-lyx">
-                                <rect key="frame" x="0.0" y="818" width="393" height="34"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbH-8o-VZd">
-                                <rect key="frame" x="0.0" y="109" width="393" height="649"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Eqx-o2-Wc1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="64w-f8-Tqj"/>
                             <constraint firstAttribute="bottom" secondItem="Qhf-py-lyx" secondAttribute="bottom" id="Ijw-9X-dWF"/>
@@ -52,17 +48,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Eqx-o2-Wc1" secondAttribute="trailing" id="RZp-U0-pRP"/>
                             <constraint firstItem="KLq-ua-Wz8" firstAttribute="top" secondItem="tbH-8o-VZd" secondAttribute="bottom" id="Uzg-IP-PTO"/>
                             <constraint firstItem="Eqx-o2-Wc1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZqZ-H5-Uq6"/>
-                            <constraint firstAttribute="bottom" secondItem="O2y-11-7bY" secondAttribute="bottom" id="aNn-8L-q1Q"/>
                             <constraint firstItem="KLq-ua-Wz8" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="bf3-Oe-FZB"/>
                             <constraint firstItem="Qhf-py-lyx" firstAttribute="top" secondItem="KLq-ua-Wz8" secondAttribute="bottom" id="gan-Ga-Pu8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tbH-8o-VZd" secondAttribute="trailing" id="ily-Yw-vnv"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="O2y-11-7bY" secondAttribute="trailing" id="iuY-AN-UIf"/>
                             <constraint firstItem="Qhf-py-lyx" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="kkh-8E-ug9"/>
                             <constraint firstAttribute="trailing" secondItem="Qhf-py-lyx" secondAttribute="trailing" id="oID-Pe-i8p"/>
-                            <constraint firstItem="O2y-11-7bY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="pFV-jS-9Ix"/>
                             <constraint firstItem="tbH-8o-VZd" firstAttribute="top" secondItem="Eqx-o2-Wc1" secondAttribute="bottom" id="tgA-98-hus"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KLq-ua-Wz8" secondAttribute="trailing" id="tm3-1V-B2A"/>
-                            <constraint firstItem="O2y-11-7bY" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="uAe-gO-Lys"/>
                             <constraint firstItem="KLq-ua-Wz8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yWK-6X-9mF"/>
                         </constraints>
                     </view>
@@ -95,10 +87,4 @@
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="spring_background" width="2400" height="2000"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

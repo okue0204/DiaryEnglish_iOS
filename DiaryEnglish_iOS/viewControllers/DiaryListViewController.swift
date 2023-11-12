@@ -12,8 +12,14 @@ import SwiftyDI
 class DiaryListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var searchTextField: PaddingTextField!
+    @IBOutlet weak var searchTextField: PaddingTextField! {
+        didSet {
+            searchTextField.layer.borderColor = UIColor.lightGray.cgColor
+            searchTextField.layer.borderWidth = 1
+            searchTextField.layer.cornerRadius = 10
+        }
+    }
+    
     
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase

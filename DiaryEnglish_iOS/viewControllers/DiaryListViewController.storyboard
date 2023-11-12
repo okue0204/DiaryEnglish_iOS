@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spring_background" translatesAutoresizingMaskIntoConstraints="NO" id="Zxf-2D-y7n">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cX6-DD-49j">
                                 <rect key="frame" x="0.0" y="118" width="393" height="700"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -63,16 +60,12 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="1" green="0.98039215686274506" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cX6-DD-49j" firstAttribute="top" secondItem="hvO-cD-t0h" secondAttribute="bottom" constant="10" id="0Nf-Qs-Rbn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hvO-cD-t0h" secondAttribute="trailing" id="2N3-0T-v3h"/>
-                            <constraint firstAttribute="bottom" secondItem="Zxf-2D-y7n" secondAttribute="bottom" id="5Oe-62-7Tj"/>
                             <constraint firstItem="hvO-cD-t0h" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="5tt-z6-xzG"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Zxf-2D-y7n" secondAttribute="trailing" id="KNe-Sq-MPG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cX6-DD-49j" secondAttribute="trailing" id="Ko1-5Y-5QK"/>
-                            <constraint firstItem="Zxf-2D-y7n" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="TdY-jr-Npz"/>
-                            <constraint firstItem="Zxf-2D-y7n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ZPO-Th-IBY"/>
                             <constraint firstItem="hvO-cD-t0h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cGe-kB-cag"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cX6-DD-49j" secondAttribute="bottom" id="nxO-kT-nca"/>
                             <constraint firstItem="cX6-DD-49j" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="wCJ-66-ocG"/>
@@ -80,7 +73,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="n0l-Id-03M"/>
                     <connections>
-                        <outlet property="backgroundImageView" destination="Zxf-2D-y7n" id="Lkm-p0-ibt"/>
                         <outlet property="searchTextField" destination="xfW-RU-VA7" id="xsd-dF-Xes"/>
                         <outlet property="tableView" destination="cX6-DD-49j" id="Aou-3A-0ix"/>
                     </connections>
@@ -92,7 +84,6 @@
     </scenes>
     <resources>
         <image name="delete" width="26" height="26"/>
-        <image name="spring_background" width="2400" height="2000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

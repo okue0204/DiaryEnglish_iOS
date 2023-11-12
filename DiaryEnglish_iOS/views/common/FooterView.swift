@@ -20,6 +20,14 @@ class FooterView: UIView {
     @IBOutlet weak var homeLabel: UILabel!
     @IBOutlet weak var addDiaryLabel: UILabel!
     @IBOutlet weak var settingLabel: UILabel!
+    @IBOutlet var containerView: UIView! {
+        didSet {
+            containerView.layer.shadowColor = UIColor.black.cgColor
+            containerView.layer.shadowOffset = CGSize(width: 0, height: -4)
+            containerView.layer.shadowRadius = 2
+            containerView.layer.shadowOpacity = 0.1
+        }
+    }
     
     weak var delegate: FooterViewDelegate?
     
@@ -43,7 +51,7 @@ class FooterView: UIView {
     
     private func updateLayout(selectTab: Tab, oldTab: Tab) {
         stackView.subviews.forEach { view in
-            let selectColor = view.tag == selectTab.rawValue ? UIColor.systemPink : .lightGray
+            let selectColor = view.tag == selectTab.rawValue ? UIColor.orange : .lightGray
             view.subviews.forEach {
                 if let label = $0 as? UILabel {
                     label.textColor = selectColor

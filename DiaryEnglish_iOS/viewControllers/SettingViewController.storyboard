@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spring_background" translatesAutoresizingMaskIntoConstraints="NO" id="412-Ev-AeT">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-jg-Dag">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
@@ -124,8 +121,10 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" red="1" green="0.98039215686274506" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="DgE-5T-lsx" firstAttribute="leading" secondItem="EY1-r6-ngR" secondAttribute="leading" id="CcV-zT-HtA"/>
                                     <constraint firstItem="DgE-5T-lsx" firstAttribute="trailing" secondItem="EY1-r6-ngR" secondAttribute="trailing" id="bat-jd-mt0"/>
@@ -140,12 +139,8 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="412-Ev-AeT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7Aw-Rc-R6g"/>
                             <constraint firstItem="PhO-jg-Dag" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DY2-0X-LZn"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="412-Ev-AeT" secondAttribute="trailing" id="HO1-xN-5dD"/>
-                            <constraint firstItem="412-Ev-AeT" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="MsA-hR-aDU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="PhO-jg-Dag" secondAttribute="bottom" id="R7y-xh-gpW"/>
-                            <constraint firstAttribute="bottom" secondItem="412-Ev-AeT" secondAttribute="bottom" id="UBM-gb-E7J"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PhO-jg-Dag" secondAttribute="trailing" id="cOY-jo-wzs"/>
                             <constraint firstItem="PhO-jg-Dag" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xNx-JT-LfG"/>
                         </constraints>
@@ -162,7 +157,4 @@
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="spring_background" width="2400" height="2000"/>
-    </resources>
 </document>

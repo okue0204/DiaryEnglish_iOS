@@ -20,8 +20,19 @@ class DiaryListTableViewCell: UITableViewCell {
     @IBOutlet weak var watToSayLabel: UILabel!
     @IBOutlet weak var situationStackView: UIStackView!
     @IBOutlet weak var wantToSayStackView: UIStackView!
+    @IBOutlet weak var japaneseDiaryLabelCotainerView: UIView!
+    @IBOutlet weak var englishDiaryLabelCotainerView: UIView!
+    @IBOutlet weak var situationLabelContainerView: UIView!
+    @IBOutlet weak var wantToSayLabelContainerView: UIView!
     
     weak var delegate: DiaryListTableViewCellDelegate?
+    
+    private lazy var labelContainerViews: [UIView] = [
+        japaneseDiaryLabelCotainerView,
+        englishDiaryLabelCotainerView,
+        situationLabelContainerView,
+        wantToSayLabelContainerView
+    ]
     
     var diary: Diary? {
         didSet {
@@ -42,6 +53,11 @@ class DiaryListTableViewCell: UITableViewCell {
     }
     
     private func setupLayout(diary: Diary) {
+        labelContainerViews.forEach {
+            $0.layer.cornerRadius = 10
+            $0.layer.borderColor = UIColor.lightGray.cgColor
+            $0.layer.borderWidth = 1.0
+        }
         japaneseDiaryLabel.text = diary.japanese
         englishDiaryLabel.text = diary.english
         situationStackView.isHidden = diary.situation.isNullOrEmpty

@@ -31,7 +31,6 @@ class DiaryContainerViewController: UIViewController {
         headerView.delegate = self
         footerView.delegate = self
         changeViewController(selectTab: .home)
-        BackgroundAnimationManager.setupAnimation(view: view)
     }
     
     private func changeViewController(selectTab: Tab, oldTab: Tab? = nil) {
