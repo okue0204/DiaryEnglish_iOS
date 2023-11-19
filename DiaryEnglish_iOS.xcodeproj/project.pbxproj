@@ -17,6 +17,9 @@
 		3C459F732AEA1FE60082CF25 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C459F722AEA1FE60082CF25 /* PaddingTextField.swift */; };
 		3C4BE8232B09B3BE00B484C9 /* DiarySaveAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4BE8222B09B3BE00B484C9 /* DiarySaveAlertViewController.swift */; };
 		3C4BE8252B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4BE8242B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard */; };
+		3C4BE8272B09D35100B484C9 /* TimeZone+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4BE8262B09D35100B484C9 /* TimeZone+DiaryEnglish.swift */; };
+		3C4BE8292B09D39800B484C9 /* Locale+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4BE8282B09D39800B484C9 /* Locale+DiaryEnglish.swift */; };
+		3C4BE82B2B09F56800B484C9 /* Calender+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4BE82A2B09F56800B484C9 /* Calender+DiaryEnglish.swift */; };
 		3C690ECB2AE7DB5C00451294 /* DiaryContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */; };
 		3C690ECD2AE7DB6F00451294 /* DiaryContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */; };
 		3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECE2AE7DE3800451294 /* FooterView.swift */; };
@@ -85,6 +88,9 @@
 		3C459F722AEA1FE60082CF25 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		3C4BE8222B09B3BE00B484C9 /* DiarySaveAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySaveAlertViewController.swift; sourceTree = "<group>"; };
 		3C4BE8242B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiarySaveAlertViewController.storyboard; sourceTree = "<group>"; };
+		3C4BE8262B09D35100B484C9 /* TimeZone+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+DiaryEnglish.swift"; sourceTree = "<group>"; };
+		3C4BE8282B09D39800B484C9 /* Locale+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+DiaryEnglish.swift"; sourceTree = "<group>"; };
+		3C4BE82A2B09F56800B484C9 /* Calender+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calender+DiaryEnglish.swift"; sourceTree = "<group>"; };
 		3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContainerViewController.swift; sourceTree = "<group>"; };
 		3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryContainerViewController.storyboard; sourceTree = "<group>"; };
 		3C690ECE2AE7DE3800451294 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
@@ -277,6 +283,9 @@
 				3CA1C21B2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift */,
 				3CA1C21D2ADBFB7A00DEC693 /* String+DiaryEnglish.swift */,
 				3CB5A98C2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift */,
+				3C4BE8262B09D35100B484C9 /* TimeZone+DiaryEnglish.swift */,
+				3C4BE8282B09D39800B484C9 /* Locale+DiaryEnglish.swift */,
+				3C4BE82A2B09F56800B484C9 /* Calender+DiaryEnglish.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -467,6 +476,7 @@
 			files = (
 				3CC390D92AD5694A007897EB /* NoDataTableViewCell.swift in Sources */,
 				3C459F732AEA1FE60082CF25 /* PaddingTextField.swift in Sources */,
+				3C4BE8292B09D39800B484C9 /* Locale+DiaryEnglish.swift in Sources */,
 				3CA1C21C2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift in Sources */,
 				3CC390D62AD56822007897EB /* UIStoryboard+DiaryEnglish.swift in Sources */,
 				3CB5A98D2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift in Sources */,
@@ -480,11 +490,13 @@
 				3C690ECB2AE7DB5C00451294 /* DiaryContainerViewController.swift in Sources */,
 				3CB5A98B2AE67B05009616ED /* UserDefaultRepository.swift in Sources */,
 				3CCA91802AD18A6600E6CC28 /* SceneDelegate.swift in Sources */,
+				3C4BE8272B09D35100B484C9 /* TimeZone+DiaryEnglish.swift in Sources */,
 				3C1D63902AED223D005869AC /* Diary+CoreDataProperties.swift in Sources */,
 				3CCA91C02AD18D0B00E6CC28 /* DiaryEditViewController.swift in Sources */,
 				3C1D63832AECEBB7005869AC /* Diary.xcdatamodeld in Sources */,
 				3CCA92182AD4143C00E6CC28 /* DiaryListTableViewCell.swift in Sources */,
 				3C9EA2352AD81417007AC1FD /* UIView+DiaryEnglish.swift in Sources */,
+				3C4BE82B2B09F56800B484C9 /* Calender+DiaryEnglish.swift in Sources */,
 				3C1D638F2AED223D005869AC /* Diary+CoreDataClass.swift in Sources */,
 				3C1D63932AED2FA8005869AC /* RequestDiaryData.swift in Sources */,
 				3CCA920B2AD4016900E6CC28 /* Season.swift in Sources */,
@@ -664,9 +676,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BR9PKVDZT;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5BR9PKVDZT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryEnglish_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -682,6 +696,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "okue.DiaryEnglish-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DiaryEnglish;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -696,9 +712,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5BR9PKVDZT;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5BR9PKVDZT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryEnglish_iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -714,6 +732,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "okue.DiaryEnglish-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DiaryEnglish;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
