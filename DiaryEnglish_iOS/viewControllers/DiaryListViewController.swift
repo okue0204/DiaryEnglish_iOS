@@ -53,7 +53,7 @@ class DiaryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        speecher.speechSynthesizer.delegate = self
         setupLayout()
     }
     
@@ -173,6 +173,10 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
     }
 }
 
+extension DiaryListViewController: AVSpeechSynthesizerDelegate {
+    
+}
+
 fileprivate extension Array where Element == Diary {
     func filter(searchWord: String) -> [Diary] {
         return filter {
@@ -186,3 +190,4 @@ fileprivate extension Array where Element == Diary {
         }
     }
 }
+

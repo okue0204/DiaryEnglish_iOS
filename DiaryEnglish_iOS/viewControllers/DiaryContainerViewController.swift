@@ -42,6 +42,7 @@ class DiaryContainerViewController: UIViewController {
         let viewController = viewControllers[selectTab.rawValue]
         if let diaryEditViewController = viewController as? DiaryEditViewController {
             diaryEditViewController.transitionType = .register
+            diaryEditViewController.delegate = self
         }
         footerView.selectTab(tabType: selectTab)
         headerView.title = selectTab.title
@@ -62,10 +63,13 @@ extension DiaryContainerViewController: HeaderViewDelegate {
     func didDiarySave() {
         if let diaryEditViewController = viewControllers[selectTab.rawValue] as? DiaryEditViewController {
             diaryEditViewController.transitionType = .register
-            diaryEditViewController.dairyDataSave { [weak self] in
-                guard let self else { return }
-                changeViewController(selectTab: .home)
-            }
+            diaryEditViewController.dairyDataSave()
         }
+    }
+}
+
+extension DiaryContainerViewController: DiaryEditViewControllerDelegate {
+    func didDiaryUpdate() {
+        changeViewController(selectTab: .home)
     }
 }

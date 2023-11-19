@@ -8,6 +8,10 @@
 import UIKit
 import Combine
 
+protocol DiaryEditViewControllerDelegate: AnyObject {
+    func didDiaryUpdate()
+}
+
 class DiaryEditViewController: UIViewController {
     
     enum TransitionType {
@@ -21,6 +25,8 @@ class DiaryEditViewController: UIViewController {
     @IBOutlet weak var situationTextView: UITextView!
     @IBOutlet weak var wantToSayTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    weak var delegate: DiaryEditViewControllerDelegate?
     
     lazy var textViews: [UITextView] = [
         japaneseTextView,
@@ -132,11 +138,16 @@ class DiaryEditViewController: UIViewController {
     private func updateLayout() {
         if case .register = transitionType {
             textViews.forEach { $0.text = nil }
-            setupPlaceHolder()
+            setupPlaceHolder(textViews: textViews)
+        } else {
+            let filteredTextViews = textViews.filter {
+                $0.text.isEmpty
+            }
+            setupPlaceHolder(textViews: filteredTextViews)
         }
     }
     
-    private func setupPlaceHolder() {
+    private func setupPlaceHolder(textViews: [UITextView]) {
         textViews.forEach {
             let placeHolderLabel: UILabel = {
                 let label = UILabel()
@@ -181,28 +192,17 @@ class DiaryEditViewController: UIViewController {
         }
     }
     
-    func dairyDataSave(completionHandler: (() -> Void)? = nil) {
+    func dairyDataSave() {
+        let diarySaveAlertViewController = UIStoryboard.diayrSaveAlertStroyboard.instantiateInitialViewController() as! DiarySaveAlertViewController
+        diarySaveAlertViewController.modalTransitionStyle = .crossDissolve
+        diarySaveAlertViewController.modalPresentationStyle = .overCurrentContext
+        diarySaveAlertViewController.delegate = self
         if japaneseTextView.text.isEmpty, englishTextView.text.isEmpty {
-            showAlert(title: "入力して下さい",
-                      actions: [UIAlertAction(title: "OK",
-                                              style: .default)])
+            diarySaveAlertViewController.transition = .alert
         } else {
-            showAlert(title: "保存しました。",
-                      actions: [UIAlertAction(title: "OK",
-                                              style: .default) { [weak self] _ in
-                guard let self else { return }
-                switch transitionType {
-                case .edit:
-                    CoreDataUsecase.shard.update(requestDiaryData: requestDiaryData)
-                    navigationController?.popViewController(animated: true)
-                case .register:
-                    let id = NSUUID().uuidString
-                    requestDiaryData.id = id
-                    CoreDataUsecase.shard.save(requestDiaryData: requestDiaryData)
-                    completionHandler?()
-                }
-            }])
+            diarySaveAlertViewController.transition = .save
         }
+        present(diarySaveAlertViewController, animated: true)
     }
     
     @objc
@@ -258,5 +258,20 @@ extension DiaryEditViewController: UITextViewDelegate {
             }
         }
         return true
+    }
+}
+
+extension DiaryEditViewController: DiarySaveAlertViewControllerDelegate {
+    func didAletClose() {
+        switch transitionType {
+        case .edit:
+            CoreDataUsecase.shard.update(requestDiaryData: requestDiaryData)
+            navigationController?.popViewController(animated: true)
+        case .register:
+            let id = NSUUID().uuidString
+            requestDiaryData.id = id
+            CoreDataUsecase.shard.save(requestDiaryData: requestDiaryData)
+            delegate?.didDiaryUpdate()
+        }
     }
 }

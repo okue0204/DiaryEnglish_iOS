@@ -16,7 +16,7 @@ class Speecher {
     let defaultSpeedValue: Float = 0.5
     let defaultPitchValue: Float = 1.0
     
-    private var speechSynthesizer = AVSpeechSynthesizer()
+    var speechSynthesizer = AVSpeechSynthesizer()
     
     func speech(voiceText: String, speed: Float? = nil, pitch: Float? = nil) {
         let utterance = AVSpeechUtterance.init(string: voiceText)

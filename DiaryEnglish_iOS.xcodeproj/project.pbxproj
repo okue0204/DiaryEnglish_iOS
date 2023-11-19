@@ -15,6 +15,8 @@
 		3C1D63902AED223D005869AC /* Diary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D638E2AED223D005869AC /* Diary+CoreDataProperties.swift */; };
 		3C1D63932AED2FA8005869AC /* RequestDiaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1D63922AED2FA8005869AC /* RequestDiaryData.swift */; };
 		3C459F732AEA1FE60082CF25 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C459F722AEA1FE60082CF25 /* PaddingTextField.swift */; };
+		3C4BE8232B09B3BE00B484C9 /* DiarySaveAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4BE8222B09B3BE00B484C9 /* DiarySaveAlertViewController.swift */; };
+		3C4BE8252B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4BE8242B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard */; };
 		3C690ECB2AE7DB5C00451294 /* DiaryContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */; };
 		3C690ECD2AE7DB6F00451294 /* DiaryContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */; };
 		3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECE2AE7DE3800451294 /* FooterView.swift */; };
@@ -81,6 +83,8 @@
 		3C1D638E2AED223D005869AC /* Diary+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Diary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1D63922AED2FA8005869AC /* RequestDiaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDiaryData.swift; sourceTree = "<group>"; };
 		3C459F722AEA1FE60082CF25 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
+		3C4BE8222B09B3BE00B484C9 /* DiarySaveAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiarySaveAlertViewController.swift; sourceTree = "<group>"; };
+		3C4BE8242B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiarySaveAlertViewController.storyboard; sourceTree = "<group>"; };
 		3C690ECA2AE7DB5C00451294 /* DiaryContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryContainerViewController.swift; sourceTree = "<group>"; };
 		3C690ECC2AE7DB6F00451294 /* DiaryContainerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryContainerViewController.storyboard; sourceTree = "<group>"; };
 		3C690ECE2AE7DE3800451294 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				3CCA91C12AD18D1100E6CC28 /* DiaryEditViewController.storyboard */,
 				3CCA91C32AD18D2000E6CC28 /* SettingViewController.swift */,
 				3CCA91C52AD18D2600E6CC28 /* SettingViewController.storyboard */,
+				3C4BE8222B09B3BE00B484C9 /* DiarySaveAlertViewController.swift */,
+				3C4BE8242B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -433,6 +439,7 @@
 				3CC390DA2AD5694A007897EB /* NoDataTableViewCell.xib in Resources */,
 				3CCA91C22AD18D1100E6CC28 /* DiaryEditViewController.storyboard in Resources */,
 				3CCA91BE2AD18CFC00E6CC28 /* DiaryListViewController.storyboard in Resources */,
+				3C4BE8252B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard in Resources */,
 				3CCA91872AD18A6700E6CC28 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +491,7 @@
 				3C690ED42AE934CA00451294 /* Tab.swift in Sources */,
 				3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */,
 				3C9EA1F02AD807B8007AC1FD /* DotLineView.swift in Sources */,
+				3C4BE8232B09B3BE00B484C9 /* DiarySaveAlertViewController.swift in Sources */,
 				3CA1C21E2ADBFB7A00DEC693 /* String+DiaryEnglish.swift in Sources */,
 				3CCA91C42AD18D2000E6CC28 /* SettingViewController.swift in Sources */,
 				3C1D63892AECED13005869AC /* CoreDataRepository.swift in Sources */,
