@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 content.sound = .default
                 let dataComponents = DateComponents(calendar: Calendar.appCalender,
                                                     timeZone: TimeZone.japan,
-                                                    hour: 20)
+                                                    hour: 19)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dataComponents, repeats: true)
                 let request = UNNotificationRequest(identifier: Self.notificationReqeustIdentifire,
                                                     content: content,
