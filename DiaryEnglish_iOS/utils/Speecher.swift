@@ -29,5 +29,4 @@ class Speecher {
         utterance.voice = AVSpeechSynthesisVoice.init(language: "en-US")
         speechSynthesizer.speak(utterance)
     }
-    
 }

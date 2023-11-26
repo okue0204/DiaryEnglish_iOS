@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import SwiftyDI
+import Combine
 
 class DiaryListViewController: UIViewController {
     
@@ -20,15 +21,16 @@ class DiaryListViewController: UIViewController {
         }
     }
     
-    
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
     
-    var diaries: [Diary] = []
+    private var disPoseBag = Set<AnyCancellable>()
+    private var diaries: [Diary] = []
     var speedData: Float?
     var pitchData: Float?
     
     let speecher = Speecher.shard
+    let audioSession = AVAudioSession.sharedInstance()
     
     private var searchWord: String? {
         didSet {
@@ -55,6 +57,45 @@ class DiaryListViewController: UIViewController {
         super.viewDidLoad()
         speecher.speechSynthesizer.delegate = self
         setupLayout()
+        checkHeadphonesConnected()
+        NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification, object: nil)
+            .sink { [weak self] notification in
+                guard let userInfo = notification.userInfo,
+                      let routeChangeReasonRawValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+                      let routeChangeReason = AVAudioSession.RouteChangeReason(rawValue: routeChangeReasonRawValue),
+                      let self else {
+                    return
+                }
+
+                switch routeChangeReason {
+                case .newDeviceAvailable:
+                    // イヤホン接続
+                    do {
+                        try audioSession.setCategory(.ambient, options: [])
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                case .oldDeviceUnavailable:
+                    // イヤホン接続解除
+                    do {
+                        try audioSession.setCategory(.playAndRecord, options: .defaultToSpeaker)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                default:
+                    break
+                }
+            }.store(in: &disPoseBag)
+    }
+    
+    private func checkHeadphonesConnected() {
+        audioSession.currentRoute.outputs.forEach {
+            if $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothHFP || $0.portType == .bluetoothLE {
+                try! audioSession.setCategory(.ambient, options: [])
+            } else {
+                try! audioSession.setCategory(.playAndRecord, options: .defaultToSpeaker)
+            }
+        }
     }
     
     private func fetchDiaryData() {
@@ -174,7 +215,13 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
 }
 
 extension DiaryListViewController: AVSpeechSynthesizerDelegate {
-    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        do {
+            try audioSession.setActive(false)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }
 
 fileprivate extension Array where Element == Diary {
