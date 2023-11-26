@@ -39,8 +39,6 @@
 		3CC390D92AD5694A007897EB /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC390D72AD5694A007897EB /* NoDataTableViewCell.swift */; };
 		3CC390DA2AD5694A007897EB /* NoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC390D82AD5694A007897EB /* NoDataTableViewCell.xib */; };
 		3CC390DE2AD56A54007897EB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC390DD2AD56A54007897EB /* Lottie */; };
-		3CC390E02AD56AAF007897EB /* BackgroundAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC390DF2AD56AAF007897EB /* BackgroundAnimationManager.swift */; };
-		3CC390E42AD5751C007897EB /* spring_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CC390E32AD5751C007897EB /* spring_animation.json */; };
 		3CCA917E2AD18A6600E6CC28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA917D2AD18A6600E6CC28 /* AppDelegate.swift */; };
 		3CCA91802AD18A6600E6CC28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA917F2AD18A6600E6CC28 /* SceneDelegate.swift */; };
 		3CCA91872AD18A6700E6CC28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA91862AD18A6700E6CC28 /* Assets.xcassets */; };
@@ -51,10 +49,6 @@
 		3CCA91C22AD18D1100E6CC28 /* DiaryEditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA91C12AD18D1100E6CC28 /* DiaryEditViewController.storyboard */; };
 		3CCA91C42AD18D2000E6CC28 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA91C32AD18D2000E6CC28 /* SettingViewController.swift */; };
 		3CCA91C62AD18D2600E6CC28 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA91C52AD18D2600E6CC28 /* SettingViewController.storyboard */; };
-		3CCA920B2AD4016900E6CC28 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA920A2AD4016900E6CC28 /* Season.swift */; };
-		3CCA920E2AD4066600E6CC28 /* winter_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA920D2AD4066600E6CC28 /* winter_animation.json */; };
-		3CCA92102AD4066E00E6CC28 /* fall_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA920F2AD4066E00E6CC28 /* fall_animation.json */; };
-		3CCA92142AD40D9F00E6CC28 /* summer_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA92132AD40D9F00E6CC28 /* summer_animation.json */; };
 		3CCA92182AD4143C00E6CC28 /* DiaryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA92162AD4143C00E6CC28 /* DiaryListTableViewCell.swift */; };
 		3CCA92192AD4143C00E6CC28 /* DiaryListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCA92172AD4143C00E6CC28 /* DiaryListTableViewCell.xib */; };
 		3CCA921B2AD4255C00E6CC28 /* UITableView+DiaryEnglish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA921A2AD4255C00E6CC28 /* UITableView+DiaryEnglish.swift */; };
@@ -108,8 +102,6 @@
 		3CC390D52AD56822007897EB /* UIStoryboard+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+DiaryEnglish.swift"; sourceTree = "<group>"; };
 		3CC390D72AD5694A007897EB /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
 		3CC390D82AD5694A007897EB /* NoDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataTableViewCell.xib; sourceTree = "<group>"; };
-		3CC390DF2AD56AAF007897EB /* BackgroundAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimationManager.swift; sourceTree = "<group>"; };
-		3CC390E32AD5751C007897EB /* spring_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = spring_animation.json; sourceTree = "<group>"; };
 		3CCA917A2AD18A6600E6CC28 /* DiaryEnglish_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryEnglish_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CCA917D2AD18A6600E6CC28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CCA917F2AD18A6600E6CC28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,10 +116,6 @@
 		3CCA91C12AD18D1100E6CC28 /* DiaryEditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiaryEditViewController.storyboard; sourceTree = "<group>"; };
 		3CCA91C32AD18D2000E6CC28 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3CCA91C52AD18D2600E6CC28 /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
-		3CCA920A2AD4016900E6CC28 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
-		3CCA920D2AD4066600E6CC28 /* winter_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = winter_animation.json; sourceTree = "<group>"; };
-		3CCA920F2AD4066E00E6CC28 /* fall_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fall_animation.json; sourceTree = "<group>"; };
-		3CCA92132AD40D9F00E6CC28 /* summer_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = summer_animation.json; sourceTree = "<group>"; };
 		3CCA92162AD4143C00E6CC28 /* DiaryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListTableViewCell.swift; sourceTree = "<group>"; };
 		3CCA92172AD4143C00E6CC28 /* DiaryListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiaryListTableViewCell.xib; sourceTree = "<group>"; };
 		3CCA921A2AD4255C00E6CC28 /* UITableView+DiaryEnglish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DiaryEnglish.swift"; sourceTree = "<group>"; };
@@ -209,7 +197,6 @@
 		3CC390DB2AD56A1C007897EB /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				3CC390DF2AD56AAF007897EB /* BackgroundAnimationManager.swift */,
 				3C9EA1EF2AD807B8007AC1FD /* DotLineView.swift */,
 				3C1D637C2AEBDD60005869AC /* Speecher.swift */,
 			);
@@ -251,7 +238,6 @@
 				3CCA92082AD4013300E6CC28 /* extensions */,
 				3CCA91BA2AD18CE900E6CC28 /* viewControllers */,
 				3C1D63912AED2F8F005869AC /* entities */,
-				3CCA920C2AD4019600E6CC28 /* animations */,
 				3CCA91862AD18A6700E6CC28 /* Assets.xcassets */,
 				3CCA91882AD18A6700E6CC28 /* LaunchScreen.storyboard */,
 				3CCA918B2AD18A6700E6CC28 /* Info.plist */,
@@ -295,21 +281,9 @@
 		3CCA92092AD4014800E6CC28 /* enums */ = {
 			isa = PBXGroup;
 			children = (
-				3CCA920A2AD4016900E6CC28 /* Season.swift */,
 				3C690ED32AE934CA00451294 /* Tab.swift */,
 			);
 			path = enums;
-			sourceTree = "<group>";
-		};
-		3CCA920C2AD4019600E6CC28 /* animations */ = {
-			isa = PBXGroup;
-			children = (
-				3CC390E32AD5751C007897EB /* spring_animation.json */,
-				3CCA92132AD40D9F00E6CC28 /* summer_animation.json */,
-				3CCA920D2AD4066600E6CC28 /* winter_animation.json */,
-				3CCA920F2AD4066E00E6CC28 /* fall_animation.json */,
-			);
-			path = animations;
 			sourceTree = "<group>";
 		};
 		3CCA92152AD4142100E6CC28 /* views */ = {
@@ -438,12 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CCA91C62AD18D2600E6CC28 /* SettingViewController.storyboard in Resources */,
-				3CC390E42AD5751C007897EB /* spring_animation.json in Resources */,
-				3CCA92102AD4066E00E6CC28 /* fall_animation.json in Resources */,
 				3C9EA2332AD81340007AC1FD /* HeaderView.xib in Resources */,
-				3CCA920E2AD4066600E6CC28 /* winter_animation.json in Resources */,
 				3C690ECD2AE7DB6F00451294 /* DiaryContainerViewController.storyboard in Resources */,
-				3CCA92142AD40D9F00E6CC28 /* summer_animation.json in Resources */,
 				3C690ED12AE7DE4700451294 /* FooterView.xib in Resources */,
 				3CCA918A2AD18A6700E6CC28 /* LaunchScreen.storyboard in Resources */,
 				3CCA92192AD4143C00E6CC28 /* DiaryListTableViewCell.xib in Resources */,
@@ -482,7 +452,6 @@
 				3CA1C21C2ADBE18600DEC693 /* UIViewController+DiaryEnglish.swift in Sources */,
 				3CC390D62AD56822007897EB /* UIStoryboard+DiaryEnglish.swift in Sources */,
 				3CB5A98D2AE67BD7009616ED /* UserDefaults+DiaryEnglish.swift in Sources */,
-				3CC390E02AD56AAF007897EB /* BackgroundAnimationManager.swift in Sources */,
 				3CCA921B2AD4255C00E6CC28 /* UITableView+DiaryEnglish.swift in Sources */,
 				3C1D637D2AEBDD60005869AC /* Speecher.swift in Sources */,
 				3C1D638B2AECFB43005869AC /* CoreDataUsecase.swift in Sources */,
@@ -501,7 +470,6 @@
 				3C4BE82B2B09F56800B484C9 /* Calender+DiaryEnglish.swift in Sources */,
 				3C1D638F2AED223D005869AC /* Diary+CoreDataClass.swift in Sources */,
 				3C1D63932AED2FA8005869AC /* RequestDiaryData.swift in Sources */,
-				3CCA920B2AD4016900E6CC28 /* Season.swift in Sources */,
 				3C690ED42AE934CA00451294 /* Tab.swift in Sources */,
 				3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */,
 				3C9EA1F02AD807B8007AC1FD /* DotLineView.swift in Sources */,
@@ -688,12 +656,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryEnglish_iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "英語日記";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "英語の音声を聞くためにbluetoothに接続します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = DiaryContainerViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -727,12 +696,13 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiaryEnglish_iOS/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "英語日記";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "英語の音声を聞くためにbluetoothに接続します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = DiaryContainerViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
