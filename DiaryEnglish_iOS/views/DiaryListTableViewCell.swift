@@ -10,6 +10,7 @@ import UIKit
 protocol DiaryListTableViewCellDelegate: AnyObject {
     func englishDiarySpeechButtonDidTap(cell: UITableViewCell)
     func wantToSaySpeechButtonDidTap(cell: UITableViewCell)
+    func speakingButtonDidTap(event: UIEvent)
 }
 
 class DiaryListTableViewCell: UITableViewCell {
@@ -26,6 +27,11 @@ class DiaryListTableViewCell: UITableViewCell {
     @IBOutlet weak var wantToSayLabelContainerView: UIView!
     @IBOutlet weak var playBackgroundView: UIView!
     @IBOutlet weak var wantToSayPlayBackgroundView: UIView!
+    @IBOutlet weak var speakingStackView: UIStackView!
+    @IBOutlet weak var speakingTextView: UITextView!
+    @IBOutlet weak var speakingTextViewShowButton: UIButton!
+    @IBOutlet weak var speakingButtonBackgroundView: UIView!
+    @IBOutlet weak var speakingTextLabel: UILabel!
     
     weak var delegate: DiaryListTableViewCellDelegate?
     
@@ -35,6 +41,22 @@ class DiaryListTableViewCell: UITableViewCell {
         situationLabelContainerView,
         wantToSayLabelContainerView
     ]
+    
+    private lazy var placeHolderLabel: UILabel = {
+        let label = UILabel()
+        label.text = "キーボードを表示し、マイクを使用して\n発音が正しいか確認しよう！"
+        label.textColor = .lightGray
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var isShowSpeakingTextView: Bool = false {
+        didSet {
+            speakingTextLabel.text = isShowSpeakingTextView ? "スピーキング練習用Textを閉じる" : "スピーキング練習用Textを表示する"
+        }
+    }
     
     var diary: Diary? {
         didSet {
@@ -62,12 +84,23 @@ class DiaryListTableViewCell: UITableViewCell {
         }
         japaneseDiaryLabel.text = diary.japanese
         englishDiaryLabel.text = diary.english
+        speakingStackView.isHidden = true
         situationStackView.isHidden = diary.situation.isNullOrEmpty
         wantToSayStackView.isHidden = diary.wantToSay.isNullOrEmpty
         situationLabel.text = diary.situation
         watToSayLabel.text = diary.wantToSay
         playBackgroundView.layer.cornerRadius = playBackgroundView.bounds.height / 2
         wantToSayPlayBackgroundView.layer.cornerRadius = wantToSayPlayBackgroundView.bounds.height / 2
+        speakingTextView.delegate = self
+        speakingTextView.layer.cornerRadius = 10
+        speakingTextView.layer.borderColor = UIColor.lightGray.cgColor
+        speakingTextView.layer.borderWidth = 1.0
+        speakingTextView.backgroundColor = .white
+        speakingTextView.textColor = .black
+        speakingTextView.addSubview(placeHolderLabel)
+        speakingTextView.topAnchor.constraint(equalTo: placeHolderLabel.topAnchor, constant: -10).isActive = true
+        speakingTextView.leadingAnchor.constraint(equalTo: placeHolderLabel.leadingAnchor, constant: -8).isActive = true
+        speakingButtonBackgroundView.layer.cornerRadius = speakingButtonBackgroundView.bounds.height / 2
     }
     
     @IBAction func englishDiarySpeechButtonDidTap(_ sender: Any) {
@@ -76,5 +109,25 @@ class DiaryListTableViewCell: UITableViewCell {
     
     @IBAction func wantToSaySpeechButtonDidTap(_ sender: Any) {
         delegate?.wantToSaySpeechButtonDidTap(cell: self)
+    }
+    
+    @IBAction func speakingButtonDidTap(_ sender: UIButton, event: UIEvent) {
+        if speakingTextView.isFirstResponder {
+            speakingTextView.resignFirstResponder()
+        }
+        isShowSpeakingTextView.toggle()
+        speakingStackView.isHidden.toggle()
+        delegate?.speakingButtonDidTap(event: event)
+    }
+}
+
+extension DiaryListTableViewCell: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if let inputText = textView.text,
+           let range = Range(range, in: inputText) {
+            let updateText = inputText.replacingCharacters(in: range, with: text)
+            placeHolderLabel.alpha = updateText.isEmpty ? 1 : 0
+        }
+        return true
     }
 }

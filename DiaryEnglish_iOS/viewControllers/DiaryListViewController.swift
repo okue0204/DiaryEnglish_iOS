@@ -26,6 +26,7 @@ class DiaryListViewController: UIViewController {
     
     private var disPoseBag = Set<AnyCancellable>()
     private var diaries: [Diary] = []
+    private var speakingIndexPath: IndexPath?
     var speedData: Float?
     var pitchData: Float?
     
@@ -45,6 +46,14 @@ class DiaryListViewController: UIViewController {
         return diaries.filter(searchWord: searchWord)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        speecher.speechSynthesizer.delegate = self
+        setupLayout()
+        setupPublisher()
+        checkHeadphonesConnected()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let containerViewController = self.parent as? DiaryContainerViewController {
@@ -53,11 +62,12 @@ class DiaryListViewController: UIViewController {
         fetchDiaryData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        speecher.speechSynthesizer.delegate = self
-        setupLayout()
-        checkHeadphonesConnected()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
+    }
+    
+    private func setupPublisher() {
         NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification, object: nil)
             .sink { [weak self] notification in
                 guard let userInfo = notification.userInfo,
@@ -84,6 +94,32 @@ class DiaryListViewController: UIViewController {
                     }
                 default:
                     break
+                }
+            }.store(in: &disPoseBag)
+        
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)
+            .merge(with: NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification))
+            .sink { [weak self] notification in
+                guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+                      let self else {
+                    return
+                }
+                switch notification.name {
+                case UIResponder.keyboardWillShowNotification:
+                    guard let speakingIndexPath else {
+                        return
+                    }
+                    tableView.scrollToRow(at: speakingIndexPath, at: .top, animated: true)
+                case UIResponder.keyboardWillHideNotification:
+                    tableView.contentInset.bottom = 0
+                default:
+                    break
+                }
+                
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseIn) { [weak self] in
+                    self?.view.layoutIfNeeded()
                 }
             }.store(in: &disPoseBag)
     }
@@ -136,13 +172,19 @@ class DiaryListViewController: UIViewController {
 
 extension DiaryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if filteredDiaries.isEmpty {
-            return
-        } else {
-            let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
-            diaryEditViewController.diary = filteredDiaries[indexPath.row]
-            diaryEditViewController.transitionType = .edit
-            navigationController?.pushViewController(diaryEditViewController, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath) as? DiaryListTableViewCell {
+            if cell.speakingTextView.isFirstResponder {
+                cell.speakingTextView.resignFirstResponder()
+            } else {
+                if filteredDiaries.isEmpty {
+                    return
+                } else {
+                    let diaryEditViewController = UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController() as! DiaryEditViewController
+                    diaryEditViewController.diary = filteredDiaries[indexPath.row]
+                    diaryEditViewController.transitionType = .edit
+                    navigationController?.pushViewController(diaryEditViewController, animated: true)
+                }
+            }
         }
     }
     
@@ -178,6 +220,7 @@ extension DiaryListViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(tableViewCell: DiaryListTableViewCell.self, indexPath: indexPath) as! DiaryListTableViewCell
             cell.diary = filteredDiaries[indexPath.row]
+            cell.isShowSpeakingTextView = false
             cell.delegate = self
             return cell
         }
@@ -211,6 +254,17 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
                             speed: userDefaultsUsecase.isSpeedChange ? userDefaultsUsecase.speed : speecher.defaultSpeedValue,
                             pitch: userDefaultsUsecase.isPitchChange ? userDefaultsUsecase.pitch : speecher.defaultPitchValue)
         }
+    }
+    
+    func speakingButtonDidTap(event: UIEvent) {
+        if let touch = event.allTouches?.first {
+            let point = touch.location(in: tableView)
+            if let speakingIndexPath = tableView.indexPathForRow(at: point) {
+                self.speakingIndexPath = speakingIndexPath
+            }
+        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }
 
