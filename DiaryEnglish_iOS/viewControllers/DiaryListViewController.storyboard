@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="64" width="393" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfW-RU-VA7" customClass="PaddingTextField" customModule="DiaryEnglish_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="5" width="373" height="34"/>
+                                        <rect key="frame" x="20" y="5" width="353" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -53,9 +53,9 @@
                                     <constraint firstItem="Edg-zi-th4" firstAttribute="centerY" secondItem="hvO-cD-t0h" secondAttribute="centerY" id="C5Z-w8-LGb"/>
                                     <constraint firstAttribute="trailing" secondItem="Edg-zi-th4" secondAttribute="trailing" constant="25" id="Cyp-Nj-zBd"/>
                                     <constraint firstItem="xfW-RU-VA7" firstAttribute="top" secondItem="hvO-cD-t0h" secondAttribute="top" constant="5" id="JN5-rZ-AJc"/>
-                                    <constraint firstItem="xfW-RU-VA7" firstAttribute="leading" secondItem="hvO-cD-t0h" secondAttribute="leading" constant="10" id="sUh-UG-czq"/>
+                                    <constraint firstItem="xfW-RU-VA7" firstAttribute="leading" secondItem="hvO-cD-t0h" secondAttribute="leading" constant="20" id="sUh-UG-czq"/>
                                     <constraint firstAttribute="bottom" secondItem="xfW-RU-VA7" secondAttribute="bottom" constant="5" id="vTx-E6-FV8"/>
-                                    <constraint firstAttribute="trailing" secondItem="xfW-RU-VA7" secondAttribute="trailing" constant="10" id="yUt-Qc-RcV"/>
+                                    <constraint firstAttribute="trailing" secondItem="xfW-RU-VA7" secondAttribute="trailing" constant="20" id="yUt-Qc-RcV"/>
                                 </constraints>
                             </view>
                         </subviews>

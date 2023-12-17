@@ -7,7 +7,6 @@
 
 import UIKit
 
-@IBDesignable
 class DotLineView: UIView {
     
     @IBInspectable var lineWidth: CGFloat = 0

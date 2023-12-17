@@ -24,6 +24,8 @@ class DiaryListTableViewCell: UITableViewCell {
     @IBOutlet weak var englishDiaryLabelCotainerView: UIView!
     @IBOutlet weak var situationLabelContainerView: UIView!
     @IBOutlet weak var wantToSayLabelContainerView: UIView!
+    @IBOutlet weak var playBackgroundView: UIView!
+    @IBOutlet weak var wantToSayPlayBackgroundView: UIView!
     
     weak var delegate: DiaryListTableViewCellDelegate?
     
@@ -64,6 +66,8 @@ class DiaryListTableViewCell: UITableViewCell {
         wantToSayStackView.isHidden = diary.wantToSay.isNullOrEmpty
         situationLabel.text = diary.situation
         watToSayLabel.text = diary.wantToSay
+        playBackgroundView.layer.cornerRadius = playBackgroundView.bounds.height / 2
+        wantToSayPlayBackgroundView.layer.cornerRadius = wantToSayPlayBackgroundView.bounds.height / 2
     }
     
     @IBAction func englishDiarySpeechButtonDidTap(_ sender: Any) {
