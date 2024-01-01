@@ -11,6 +11,7 @@ protocol DiaryListTableViewCellDelegate: AnyObject {
     func englishDiarySpeechButtonDidTap(cell: UITableViewCell)
     func wantToSaySpeechButtonDidTap(cell: UITableViewCell)
     func speakingButtonDidTap(event: UIEvent)
+    func howToSpeakingButtonDidTap()
 }
 
 class DiaryListTableViewCell: UITableViewCell {
@@ -26,6 +27,7 @@ class DiaryListTableViewCell: UITableViewCell {
     @IBOutlet weak var situationLabelContainerView: UIView!
     @IBOutlet weak var wantToSayLabelContainerView: UIView!
     @IBOutlet weak var playBackgroundView: UIView!
+    @IBOutlet weak var howToSpeakingBackgroundView: UIView!
     @IBOutlet weak var wantToSayPlayBackgroundView: UIView!
     @IBOutlet weak var speakingStackView: UIStackView!
     @IBOutlet weak var speakingTextView: UITextView!
@@ -35,22 +37,14 @@ class DiaryListTableViewCell: UITableViewCell {
     
     weak var delegate: DiaryListTableViewCellDelegate?
     
+    var textViewCallBack: ((UITextView) -> Void)?
+    
     private lazy var labelContainerViews: [UIView] = [
         japaneseDiaryLabelCotainerView,
         englishDiaryLabelCotainerView,
         situationLabelContainerView,
         wantToSayLabelContainerView
     ]
-    
-    private lazy var placeHolderLabel: UILabel = {
-        let label = UILabel()
-        label.text = "キーボードを表示し、マイクを使用して\n発音が正しいか確認しよう！"
-        label.textColor = .lightGray
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
     var isShowSpeakingTextView: Bool = false {
         didSet {
@@ -77,6 +71,7 @@ class DiaryListTableViewCell: UITableViewCell {
     }
     
     private func setupLayout(diary: Diary) {
+        textViewCallBack?(speakingTextView)
         labelContainerViews.forEach {
             $0.layer.cornerRadius = 10
             $0.layer.borderColor = UIColor.lightGray.cgColor
@@ -91,16 +86,14 @@ class DiaryListTableViewCell: UITableViewCell {
         watToSayLabel.text = diary.wantToSay
         playBackgroundView.layer.cornerRadius = playBackgroundView.bounds.height / 2
         wantToSayPlayBackgroundView.layer.cornerRadius = wantToSayPlayBackgroundView.bounds.height / 2
-        speakingTextView.delegate = self
+        howToSpeakingBackgroundView.layer.cornerRadius = howToSpeakingBackgroundView.bounds.height / 2
+        speakingButtonBackgroundView.layer.cornerRadius = speakingButtonBackgroundView.bounds.height / 2
+        speakingTextView.text = nil
         speakingTextView.layer.cornerRadius = 10
         speakingTextView.layer.borderColor = UIColor.lightGray.cgColor
         speakingTextView.layer.borderWidth = 1.0
         speakingTextView.backgroundColor = .white
         speakingTextView.textColor = .black
-        speakingTextView.addSubview(placeHolderLabel)
-        speakingTextView.topAnchor.constraint(equalTo: placeHolderLabel.topAnchor, constant: -10).isActive = true
-        speakingTextView.leadingAnchor.constraint(equalTo: placeHolderLabel.leadingAnchor, constant: -8).isActive = true
-        speakingButtonBackgroundView.layer.cornerRadius = speakingButtonBackgroundView.bounds.height / 2
     }
     
     @IBAction func englishDiarySpeechButtonDidTap(_ sender: Any) {
@@ -119,15 +112,8 @@ class DiaryListTableViewCell: UITableViewCell {
         speakingStackView.isHidden.toggle()
         delegate?.speakingButtonDidTap(event: event)
     }
-}
-
-extension DiaryListTableViewCell: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if let inputText = textView.text,
-           let range = Range(range, in: inputText) {
-            let updateText = inputText.replacingCharacters(in: range, with: text)
-            placeHolderLabel.alpha = updateText.isEmpty ? 1 : 0
-        }
-        return true
+    
+    @IBAction func howToSpeakingButtonDidTap(_ sender: Any) {
+        delegate?.howToSpeakingButtonDidTap()
     }
 }

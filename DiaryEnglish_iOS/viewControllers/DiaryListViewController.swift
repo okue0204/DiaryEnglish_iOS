@@ -27,6 +27,7 @@ class DiaryListViewController: UIViewController {
     private var disPoseBag = Set<AnyCancellable>()
     private var diaries: [Diary] = []
     private var speakingIndexPath: IndexPath?
+    private var toolBar = UIToolbar()
     var speedData: Float?
     var pitchData: Float?
     
@@ -152,8 +153,7 @@ class DiaryListViewController: UIViewController {
     }
     
     private func createToolBar() {
-        let toolBar = UIToolbar()
-        let cancellButton = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(cancellButtonDidTap(_:)))
+        let cancellButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(cancellButtonDidTap(_:)))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.sizeToFit()
         toolBar.setItems([cancellButton, spacer], animated: true)
@@ -219,6 +219,9 @@ extension DiaryListViewController: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(tableViewCell: DiaryListTableViewCell.self, indexPath: indexPath) as! DiaryListTableViewCell
+            cell.textViewCallBack = { [weak self] textView in
+                textView.inputAccessoryView = self?.toolBar
+            }
             cell.diary = filteredDiaries[indexPath.row]
             cell.isShowSpeakingTextView = false
             cell.delegate = self
@@ -265,6 +268,12 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
         }
         tableView.beginUpdates()
         tableView.endUpdates()
+    }
+    
+    func howToSpeakingButtonDidTap() {
+        let howToSpeakingViewController = UIStoryboard.howToSpeakingStoryboard.instantiateInitialViewController() as! HowToSpeakingViewController
+        howToSpeakingViewController.modalPresentationStyle = .fullScreen
+        present(howToSpeakingViewController, animated: true)
     }
 }
 
