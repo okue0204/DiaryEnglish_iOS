@@ -30,7 +30,6 @@ class DiaryContainerViewController: UIViewController {
     private func setupLayout() {
         headerView.delegate = self
         headerView.isShowSaveButton = false
-        headerView.isShowCloseButton = false
         footerView.delegate = self
         changeViewController(selectTab: .home)
     }

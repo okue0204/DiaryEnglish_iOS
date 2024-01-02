@@ -9,6 +9,7 @@ import UIKit
 import AVFoundation
 import SwiftyDI
 import Combine
+import Instructions
 
 class DiaryListViewController: UIViewController {
     
@@ -26,8 +27,9 @@ class DiaryListViewController: UIViewController {
     
     private var disPoseBag = Set<AnyCancellable>()
     private var diaries: [Diary] = []
-    private var speakingIndexPath: IndexPath?
     private var toolBar = UIToolbar()
+    private var speakingIndexPath: IndexPath?
+    private let coachMarksController = CoachMarksController()
     var speedData: Float?
     var pitchData: Float?
     
@@ -51,6 +53,7 @@ class DiaryListViewController: UIViewController {
         super.viewDidLoad()
         speecher.speechSynthesizer.delegate = self
         setupLayout()
+        setupTutorial()
         setupPublisher()
         checkHeadphonesConnected()
     }
@@ -138,6 +141,13 @@ class DiaryListViewController: UIViewController {
     private func fetchDiaryData() {
         diaries = CoreDataUsecase.shard.fetchData()
         tableView.reloadData()
+    }
+    
+    private func setupTutorial() {
+        coachMarksController.delegate = self
+        coachMarksController.dataSource = self
+        coachMarksController.overlay.isUserInteractionEnabled = true
+        coachMarksController.overlay.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.5)
     }
     
     private func setupLayout() {
@@ -271,9 +281,7 @@ extension DiaryListViewController: DiaryListTableViewCellDelegate {
     }
     
     func howToSpeakingButtonDidTap() {
-        let howToSpeakingViewController = UIStoryboard.howToSpeakingStoryboard.instantiateInitialViewController() as! HowToSpeakingViewController
-        howToSpeakingViewController.modalPresentationStyle = .fullScreen
-        present(howToSpeakingViewController, animated: true)
+        coachMarksController.start(in: .window(over: self))
     }
 }
 
@@ -284,6 +292,39 @@ extension DiaryListViewController: AVSpeechSynthesizerDelegate {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+extension DiaryListViewController: CoachMarksControllerDelegate {
+    
+}
+
+extension DiaryListViewController: CoachMarksControllerDataSource {
+    func coachMarksController(_ coachMarksController: Instructions.CoachMarksController,
+                              coachMarkViewsAt index: Int,
+                              madeFrom coachMark: Instructions.CoachMark) -> (bodyView: (UIView & Instructions.CoachMarkBodyView), arrowView: (UIView & Instructions.CoachMarkArrowView)?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(
+            withArrow: true,
+            withNextText: false,
+            arrowOrientation: coachMark.arrowOrientation
+        )
+
+        coachViews.bodyView.hintLabel.text = "ハイライトされているところをタップし、キーボードを表示しよう！キーボードが表示されたらキーボード右下のマイクボタンをタップして英語で話しかけてみよう！\n※キーボードの音声入力がオフになっている場合、マイクボタンが表示されません。\n「設定」　→ 「一般」　→ 「キーボード」と選択します。音声入力をオンにします。"
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+    
+    func coachMarksController(_ coachMarksController: Instructions.CoachMarksController,
+                              coachMarkAt index: Int) -> Instructions.CoachMark {
+        guard let speakingIndexPath else {
+            fatalError("Invalid speakingTextView")
+        }
+        let cell = tableView.cellForRow(at: speakingIndexPath) as! DiaryListTableViewCell
+        let speakingTextView = cell.speakingTextView
+        return coachMarksController.helper.makeCoachMark(for: speakingTextView)
+    }
+    
+    func numberOfCoachMarks(for coachMarksController: Instructions.CoachMarksController) -> Int {
+        1
     }
 }
 

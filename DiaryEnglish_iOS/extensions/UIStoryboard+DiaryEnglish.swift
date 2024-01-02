@@ -17,6 +17,4 @@ extension UIStoryboard {
     static let settingViewControllerStoryboard = UIStoryboard(name: String(describing: SettingViewController.self), bundle: nil)
     
     static let diayrSaveAlertStroyboard = UIStoryboard(name: String(describing: DiarySaveAlertViewController.self), bundle: nil)
-    
-    static let howToSpeakingStoryboard = UIStoryboard(name: String(describing: HowToSpeakingViewController.self), bundle: nil)
 }

@@ -25,8 +25,7 @@
 		3C690ECF2AE7DE3800451294 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ECE2AE7DE3800451294 /* FooterView.swift */; };
 		3C690ED12AE7DE4700451294 /* FooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C690ED02AE7DE4700451294 /* FooterView.xib */; };
 		3C690ED42AE934CA00451294 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C690ED32AE934CA00451294 /* Tab.swift */; };
-		3C76ED0B2B386C820016BA5E /* HowToSpeakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C76ED0A2B386C820016BA5E /* HowToSpeakingViewController.swift */; };
-		3C76ED0D2B386C8A0016BA5E /* HowToSpeakingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C76ED0C2B386C8A0016BA5E /* HowToSpeakingViewController.storyboard */; };
+		3C9C51EB2B42F3FC009F69C1 /* Instructions in Frameworks */ = {isa = PBXBuildFile; productRef = 3C9C51EA2B42F3FC009F69C1 /* Instructions */; };
 		3C9EA1F02AD807B8007AC1FD /* DotLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9EA1EF2AD807B8007AC1FD /* DotLineView.swift */; };
 		3C9EA2312AD812B5007AC1FD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9EA2302AD812B5007AC1FD /* HeaderView.swift */; };
 		3C9EA2332AD81340007AC1FD /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9EA2322AD81340007AC1FD /* HeaderView.xib */; };
@@ -92,8 +91,6 @@
 		3C690ECE2AE7DE3800451294 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		3C690ED02AE7DE4700451294 /* FooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterView.xib; sourceTree = "<group>"; };
 		3C690ED32AE934CA00451294 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		3C76ED0A2B386C820016BA5E /* HowToSpeakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToSpeakingViewController.swift; sourceTree = "<group>"; };
-		3C76ED0C2B386C8A0016BA5E /* HowToSpeakingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HowToSpeakingViewController.storyboard; sourceTree = "<group>"; };
 		3C9EA1EF2AD807B8007AC1FD /* DotLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotLineView.swift; sourceTree = "<group>"; };
 		3C9EA2302AD812B5007AC1FD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3C9EA2322AD81340007AC1FD /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
@@ -132,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC390DE2AD56A54007897EB /* Lottie in Frameworks */,
+				3C9C51EB2B42F3FC009F69C1 /* Instructions in Frameworks */,
 				3CB5A9872AE67A4A009616ED /* SwiftyDI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,8 +260,6 @@
 				3CCA91C52AD18D2600E6CC28 /* SettingViewController.storyboard */,
 				3C4BE8222B09B3BE00B484C9 /* DiarySaveAlertViewController.swift */,
 				3C4BE8242B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard */,
-				3C76ED0A2B386C820016BA5E /* HowToSpeakingViewController.swift */,
-				3C76ED0C2B386C8A0016BA5E /* HowToSpeakingViewController.storyboard */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -324,6 +320,7 @@
 			packageProductDependencies = (
 				3CC390DD2AD56A54007897EB /* Lottie */,
 				3CB5A9862AE67A4A009616ED /* SwiftyDI */,
+				3C9C51EA2B42F3FC009F69C1 /* Instructions */,
 			);
 			productName = DiaryEnglish_iOS;
 			productReference = 3CCA917A2AD18A6600E6CC28 /* DiaryEnglish_iOS.app */;
@@ -400,6 +397,7 @@
 			packageReferences = (
 				3CC390DC2AD56A54007897EB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				3CB5A9852AE67A4A009616ED /* XCRemoteSwiftPackageReference "SwiftyDI" */,
+				3C9C51E92B42F3FC009F69C1 /* XCRemoteSwiftPackageReference "Instructions" */,
 			);
 			productRefGroup = 3CCA917B2AD18A6600E6CC28 /* Products */;
 			projectDirPath = "";
@@ -428,7 +426,6 @@
 				3CCA91BE2AD18CFC00E6CC28 /* DiaryListViewController.storyboard in Resources */,
 				3C4BE8252B09B3C600B484C9 /* DiarySaveAlertViewController.storyboard in Resources */,
 				3CCA91872AD18A6700E6CC28 /* Assets.xcassets in Resources */,
-				3C76ED0D2B386C8A0016BA5E /* HowToSpeakingViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +468,6 @@
 				3C4BE8272B09D35100B484C9 /* TimeZone+DiaryEnglish.swift in Sources */,
 				3C1D63902AED223D005869AC /* Diary+CoreDataProperties.swift in Sources */,
 				3CCA91C02AD18D0B00E6CC28 /* DiaryEditViewController.swift in Sources */,
-				3C76ED0B2B386C820016BA5E /* HowToSpeakingViewController.swift in Sources */,
 				3C1D63832AECEBB7005869AC /* Diary.xcdatamodeld in Sources */,
 				3CCA92182AD4143C00E6CC28 /* DiaryListTableViewCell.swift in Sources */,
 				3C9EA2352AD81417007AC1FD /* UIView+DiaryEnglish.swift in Sources */,
@@ -847,6 +843,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3C9C51E92B42F3FC009F69C1 /* XCRemoteSwiftPackageReference "Instructions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ephread/Instructions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
 		3CB5A9852AE67A4A009616ED /* XCRemoteSwiftPackageReference "SwiftyDI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/assystems/SwiftyDI";
@@ -866,6 +870,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3C9C51EA2B42F3FC009F69C1 /* Instructions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C9C51E92B42F3FC009F69C1 /* XCRemoteSwiftPackageReference "Instructions" */;
+			productName = Instructions;
+		};
 		3CB5A9862AE67A4A009616ED /* SwiftyDI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3CB5A9852AE67A4A009616ED /* XCRemoteSwiftPackageReference "SwiftyDI" */;
