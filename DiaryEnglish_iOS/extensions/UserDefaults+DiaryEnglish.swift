@@ -14,6 +14,8 @@ extension UserDefaults {
     static let pitchKey = "pitchKey"
     static let isSpeedChangeKey = "isSpeedChangeKey"
     static let isPitchChangeKey = "isPitchChangeKey"
+    static let isFirstTimeAppLaunchKey = "isFirstTimeAppLaunchKey"
+    static let interstitialUpdateKey = "interstitialUpdateKey"
     
     static var speed: Float {
         get {
@@ -48,6 +50,24 @@ extension UserDefaults {
         }
         set {
             UserDefaults.standard.setValue(newValue, forKey: Self.isPitchChangeKey)
+        }
+    }
+    
+    static var isFirstTimeAppLaunch: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: Self.isFirstTimeAppLaunchKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Self.isFirstTimeAppLaunchKey)
+        }
+    }
+    
+    static var interstitialUpdate: Date? {
+        get {
+            UserDefaults.standard.object(forKey: Self.interstitialUpdateKey) as? Date
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: Self.interstitialUpdateKey)
         }
     }
 }

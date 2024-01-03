@@ -8,12 +8,18 @@
 import UIKit
 import SwiftyDI
 import UserNotifications
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    @Injected
+    private var userDefaultUsecase: UserDefaultUsecase
+    
     static let isMockDataEnabled = false
     static let notificationReqeustIdentifire = "DiaryEnglishIdentifier"
+    static let advertisementUnitId = "ca-app-pub-6663259427797114/5798838152"
+    static let advertisementInterstitialUnitId = "ca-app-pub-6663259427797114/2726570800"
 
     private func cofigureDependencyForMock() {
         DIContainer {
@@ -36,13 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        sleep(1)
-        if Self.isMockDataEnabled {
-            cofigureDependencyForMock()
-        } else {
-            configureDependency()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        configureDependency()
+        // アプリ初回起動時のみ
+        if !userDefaultUsecase.isFirstTimeAppLaunch {
+            userDefaultUsecase.isFirstTimeAppLaunch = true
+            userDefaultUsecase.interstitialUpdate = Date()
         }
-        
+        sleep(1)
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             if granted {
                 UNUserNotificationCenter.current().delegate = self

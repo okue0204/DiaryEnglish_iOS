@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyDI
+import GoogleMobileAds
 
 class SettingViewController: UIViewController {
     
@@ -14,8 +15,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var voicePichSlider: UISlider!
     @IBOutlet weak var voiceSpeedLabel: UILabel!
     @IBOutlet weak var voicePichLabel: UILabel!
-    
-
+    @IBOutlet weak var bannerView: GADBannerView!
     
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
@@ -36,6 +36,11 @@ class SettingViewController: UIViewController {
     }
     
     private func setupLayout() {
+        bannerView.delegate = self
+        bannerView.adUnitID = AppDelegate.advertisementUnitId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
         voicePichSlider.minimumValue = 0.5
         voicePichSlider.maximumValue = 2.0
         
@@ -73,4 +78,8 @@ class SettingViewController: UIViewController {
         userDefaultsUsecase.pitch = pitch
         
     }
+}
+
+extension SettingViewController: GADBannerViewDelegate {
+    
 }

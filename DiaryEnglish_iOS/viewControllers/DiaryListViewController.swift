@@ -10,6 +10,7 @@ import AVFoundation
 import SwiftyDI
 import Combine
 import Instructions
+import GoogleMobileAds
 
 class DiaryListViewController: UIViewController {
     
@@ -21,6 +22,14 @@ class DiaryListViewController: UIViewController {
             searchTextField.layer.cornerRadius = 10
         }
     }
+    @IBOutlet weak var bannerView: GADBannerView! {
+        didSet {
+            bannerView.delegate = self
+            bannerView.adUnitID = AppDelegate.advertisementUnitId
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
+    }
     
     @Injected
     private var userDefaultsUsecase: UserDefaultUsecase
@@ -29,12 +38,12 @@ class DiaryListViewController: UIViewController {
     private var diaries: [Diary] = []
     private var toolBar = UIToolbar()
     private var speakingIndexPath: IndexPath?
-    private let coachMarksController = CoachMarksController()
+    private var coachMarksController = CoachMarksController()
+    private var speecher = Speecher.shard
+    private var audioSession = AVAudioSession.sharedInstance()
+    private var interstitial: GADInterstitialAd?
     var speedData: Float?
     var pitchData: Float?
-    
-    let speecher = Speecher.shard
-    let audioSession = AVAudioSession.sharedInstance()
     
     private var searchWord: String? {
         didSet {
@@ -55,6 +64,7 @@ class DiaryListViewController: UIViewController {
         setupLayout()
         setupTutorial()
         setupPublisher()
+        setupInterstitial()
         checkHeadphonesConnected()
     }
     
@@ -62,6 +72,7 @@ class DiaryListViewController: UIViewController {
         super.viewWillAppear(animated)
         if let containerViewController = self.parent as? DiaryContainerViewController {
             containerViewController.headerView.saveButton.isHidden = true
+            containerViewController.delegate = self
         }
         fetchDiaryData()
     }
@@ -126,6 +137,18 @@ class DiaryListViewController: UIViewController {
                     self?.view.layoutIfNeeded()
                 }
             }.store(in: &disPoseBag)
+    }
+    
+    private func setupInterstitial() {
+        GADInterstitialAd.load(withAdUnitID: AppDelegate.advertisementInterstitialUnitId,
+                               request: GADRequest()) { [weak self] ad, error in
+            if let error {
+                return
+            } else {
+                self?.interstitial = ad
+                self?.interstitial?.fullScreenContentDelegate = self
+            }
+        }
     }
     
     private func checkHeadphonesConnected() {
@@ -325,6 +348,29 @@ extension DiaryListViewController: CoachMarksControllerDataSource {
     
     func numberOfCoachMarks(for coachMarksController: Instructions.CoachMarksController) -> Int {
         1
+    }
+}
+
+extension DiaryListViewController: GADBannerViewDelegate {
+    
+}
+
+extension DiaryListViewController: GADFullScreenContentDelegate {
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        setupInterstitial()
+    }
+}
+
+extension DiaryListViewController: DiaryContainerViewControllerDelegate {
+    func didDiaryUpdate() {
+        if let interstitialUpdate = userDefaultsUsecase.interstitialUpdate,
+           let interstitial,
+           Date() > Date.daysAfter(beforInterstitialDisplay: interstitialUpdate) {
+            interstitial.present(fromRootViewController: self)
+            userDefaultsUsecase.interstitialUpdate = Date()
+        } else {
+            // 前回広告を表示してから1週間経過していない場合は何もしない
+        }
     }
 }
 

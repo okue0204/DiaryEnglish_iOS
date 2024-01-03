@@ -12,6 +12,8 @@ protocol UserDefaultRepository {
     var pitch: Float { get set }
     var isSpeedChange: Bool { get set }
     var isPitchChange: Bool { get set }
+    var isFirstTimeAppLaunch: Bool { get set }
+    var interstitialUpdate: Date? { get set }
 }
 
 class UserDefaultRepositoryImpl: UserDefaultRepository {
@@ -48,6 +50,24 @@ class UserDefaultRepositoryImpl: UserDefaultRepository {
         }
         set {
             UserDefaults.isPitckChange = newValue
+        }
+    }
+    
+    var isFirstTimeAppLaunch: Bool {
+        get {
+            UserDefaults.isFirstTimeAppLaunch
+        }
+        set {
+            UserDefaults.isFirstTimeAppLaunch = newValue
+        }
+    }
+    
+    var interstitialUpdate: Date? {
+        get {
+            UserDefaults.interstitialUpdate
+        }
+        set {
+            UserDefaults.interstitialUpdate = newValue
         }
     }
 }

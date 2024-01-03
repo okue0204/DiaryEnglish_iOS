@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DiaryContainerViewControllerDelegate: AnyObject {
+    func didDiaryUpdate()
+}
+
 class DiaryContainerViewController: UIViewController {
     
     @IBOutlet weak var headerView: HeaderView!
@@ -18,6 +22,8 @@ class DiaryContainerViewController: UIViewController {
         UIStoryboard.diaryEditViewControllerStoryboard.instantiateInitialViewController()!,
         UIStoryboard.settingViewControllerStoryboard.instantiateInitialViewController()!
     ]
+    
+    weak var delegate: DiaryContainerViewControllerDelegate?
     
     var selectTab: Tab = .home
 
@@ -72,5 +78,6 @@ extension DiaryContainerViewController: HeaderViewDelegate {
 extension DiaryContainerViewController: DiaryEditViewControllerDelegate {
     func didDiaryUpdate() {
         changeViewController(selectTab: .home)
+        delegate?.didDiaryUpdate()
     }
 }

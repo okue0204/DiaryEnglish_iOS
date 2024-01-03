@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-jg-Dag">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="699"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DgE-5T-lsx">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="256"/>
@@ -135,17 +136,28 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="EY1-r6-ngR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="S87-IA-Q6n"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPf-YZ-fcj" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="758" width="393" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Zr0-YU-SrX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PhO-jg-Dag" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DY2-0X-LZn"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="PhO-jg-Dag" secondAttribute="bottom" id="R7y-xh-gpW"/>
+                            <constraint firstItem="oPf-YZ-fcj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="JNR-4a-FY6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oPf-YZ-fcj" secondAttribute="trailing" id="WjL-zt-RFi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PhO-jg-Dag" secondAttribute="trailing" id="cOY-jo-wzs"/>
+                            <constraint firstItem="oPf-YZ-fcj" firstAttribute="top" secondItem="PhO-jg-Dag" secondAttribute="bottom" id="jbi-y8-aCk"/>
+                            <constraint firstItem="oPf-YZ-fcj" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="sxO-YE-F2G"/>
                             <constraint firstItem="PhO-jg-Dag" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="xNx-JT-LfG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="oPf-YZ-fcj" id="Xrk-Va-81W"/>
                         <outlet property="voicePichLabel" destination="TVv-Yo-aR2" id="IsU-89-fiI"/>
                         <outlet property="voicePichSlider" destination="olH-Ok-fal" id="dlD-Kx-K7E"/>
                         <outlet property="voiceSpeedLabel" destination="3FD-33-a44" id="qDL-Ni-rDh"/>
@@ -157,4 +169,9 @@
             <point key="canvasLocation" x="138.1679389312977" y="-2.1126760563380285"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

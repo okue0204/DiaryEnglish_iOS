@@ -13,10 +13,11 @@ protocol UserDefaultUsecase {
     var pitch: Float { get set }
     var isSpeedChange: Bool { get set }
     var isPitchChange: Bool { get set }
+    var isFirstTimeAppLaunch: Bool { get set }
+    var interstitialUpdate: Date? { get set }
 }
 
 class UserDefaultUsecaseImpl: UserDefaultUsecase {
-    
     @Injected
     private var repository: UserDefaultRepository
     
@@ -53,6 +54,24 @@ class UserDefaultUsecaseImpl: UserDefaultUsecase {
         }
         set {
             repository.isPitchChange = newValue
+        }
+    }
+    
+    var isFirstTimeAppLaunch: Bool {
+        get {
+            repository.isFirstTimeAppLaunch
+        }
+        set {
+            repository.isFirstTimeAppLaunch = newValue
+        }
+    }
+    
+    var interstitialUpdate: Date? {
+        get {
+            repository.interstitialUpdate
+        }
+        set {
+            repository.interstitialUpdate = newValue
         }
     }
 }

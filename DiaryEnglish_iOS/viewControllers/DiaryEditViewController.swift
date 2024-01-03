@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import GoogleMobileAds
 
 protocol DiaryEditViewControllerDelegate: AnyObject {
     func didDiaryUpdate()
@@ -25,6 +26,7 @@ class DiaryEditViewController: UIViewController {
     @IBOutlet weak var situationTextView: UITextView!
     @IBOutlet weak var wantToSayTextView: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     weak var delegate: DiaryEditViewControllerDelegate?
     
@@ -82,6 +84,10 @@ class DiaryEditViewController: UIViewController {
     }
     
     private func setupLayout() {
+        bannerView.delegate = self
+        bannerView.adUnitID = AppDelegate.advertisementUnitId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         if let diary {
             japaneseTextView.text = diary.japanese
             englishTextView.text = diary.english
@@ -274,4 +280,8 @@ extension DiaryEditViewController: DiarySaveAlertViewControllerDelegate {
             delegate?.didDiaryUpdate()
         }
     }
+}
+
+extension DiaryEditViewController: GADBannerViewDelegate {
+    
 }
